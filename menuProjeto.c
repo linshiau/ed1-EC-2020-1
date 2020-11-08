@@ -7,7 +7,7 @@ int opcao;
     inicio:
     system("cls");
     system("color 0F");
-    printf("1 - MULTIPLICACAO DE MATRIZES \n2 - SOMA DE MATRIZES \n3 - ESCALONAMENTO DE MATRIZ \n4 - MATRIZ INVERSA\n");
+    printf("1 - MULTIPLICACAO DE MATRIZES \n2 - SOMA DE MATRIZES \n3 - ESCALONAMENTO DE MATRIZ \n4 - MATRIZ INVERSA\n5 - MULTIPLICACAO POR ESCALAR \n6 - SAIR");
     opcao = getch();
     switch (opcao) {
     case '1':
@@ -156,11 +156,55 @@ int opcao;
         break;
     case '3':
         system("cls");
-        printf("Creditos\n");
+
+        void inicializaMatriz(float ***m, int *numLin, int *numCol);
+        void imprimeMatriz(float **m, int numLin, int numCol);
+        void escalonaMatriz(float **m, int tamLin, int tamCol);
+        void analisaMatrizEscalonada(float **m, int tamLin, int tamCol);
+
         break;
     case '4':
         system("cls");
-        printf("voce pediu para sair, prencione qualquer tecla para continuar\n");
+
+        break;
+    case '5':
+        system("cls");
+
+        printf("\n==========MULTIPLICACAO POR ESCALAR==========\n");
+              printf("\nMatriz 1\n==========\n");
+              printf("\nDigite o numero de linhas...: ");
+              scanf("%d", &i1);
+              printf("Digite o numero de colunas..: ");
+              scanf("%d", &j1);
+                printf("\nValores da Matriz 1\n=====================\n\n");
+                for (i=0; i<i1; i++) {
+                  for(j=0; j<j1; j++) {
+                    printf("Digite um valor para [%d][%d].: ", (i+1), (j+1));
+                    scanf("%d", &m1[i][j]);
+                  }
+                }
+                printf("Digite um escalar : ");
+                    scanf("%d", &k);
+                for (i=0;i<i1; i++) {
+                  for (j=0; j<i1; j++) {
+                      m3[i][j] = m1[i][j] * k;
+                  }
+                }
+                printf("\nMatriz 3\n=====================\n\n");
+                for (i=0; i<i1; i++) {
+                  for (j=0; j<j1; j++) {
+                    printf("%d ", m3[i][j]);
+                  }
+                  printf("\n");
+                }
+                printf("\n");
+              return(0);
+
+
+        break;
+    case '6':
+        system("cls");
+
         break;
     default:
         printf("voce deve escolher uma opcao valida\n");
