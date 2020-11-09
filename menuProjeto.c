@@ -7,13 +7,13 @@ int opcao;
     inicio:
     system("cls");
     system("color 0F");
-    printf("1 - MULTIPLICACAO DE MATRIZES \n2 - SOMA DE MATRIZES \n3 - ESCALONAMENTO DE MATRIZ \n4 - MATRIZ INVERSA\n5 - MULTIPLICACAO POR ESCALAR \n6 - MATRIZ TRANSPOSTA \n7 - SUBTRACAO DE MATRIZES \n8 - SAIR");
+    printf("1 - MULTIPLICACAO DE MATRIZES \n2 - SOMA DE MATRIZES \n3 - ESCALONAMENTO DE MATRIZ \n4 - MATRIZ INVERSA\n5 - MULTIPLICACAO POR ESCALAR \n6 - MATRIZ TRANSPOSTA \n7 - SUBTRACAO DE MATRIZES \n8 - DETERMINANTE DE MATRIZES \n9 - SAIR");
     opcao = getch();
     switch (opcao) {
     case '1':
         system("cls");
 
-            int i1, j1, i2, j2, i, j, k, m1[50][50], m2[50][50], m3[50][50];
+            int i1, j1, i2, j2, i, j, k, n, resultado, m1[50][50], m2[50][50], m3[50][50];
 
               printf("\n==========MULTIPLICACAO DE MATRIZES==========\n");
               printf("\nMatriz 1\n==========\n");
@@ -249,6 +249,29 @@ int opcao;
         break;
     case '8':
         system("cls");
+        printf("\n==========DETERMINANTE DE MATRIZES==========\n");
+        printf("\nMatriz 1\n==========\n");
+        printf("\nDigite a ordem da matriz...: ");
+        scanf("%d",&n);
+        printf("\nValores da Matriz 1\n=====================\n\n");
+                    for (i=0; i<n; i++) {
+                      for(j=0; j<n; j++) {
+                        printf("Digite um valor para [%d][%d].: ", (i+1), (j+1));
+                        scanf("%d", &m1[i][j]);
+                      }
+                    }
+        for(i=0;i<n;i++){
+            for(j=0;j<n;j++){
+                printf("%5d",m1[i][j]);
+            }
+            printf("\n");
+        }
+        resultado = det(m1,n);
+        printf("\nDeterminante da matriz \n=====================\n");
+        printf("\n     det = %d\n",resultado);
+        break;
+    case '9':
+        system("cls");
 
         break;
     default:
@@ -257,4 +280,37 @@ int opcao;
         system("pause");
         goto inicio;
     }
+}
+
+int det(int m1[50][50], int n){
+    int Menor[50][50];
+    int i,j,k,c1,c2;
+    int determinante;
+    int c[50];
+    int O=1;
+    determinante = 0;
+    if(n == 2){
+        determinante = m1[0][0]*m1[1][1]-m1[0][1]*m1[1][0];
+        return determinante;
+    }
+    else{
+        for(i=0;i<n;i++){
+            c1 = 0, c2 = 0;
+            for(j=0;j<n;j++){
+                for(k=0;k<n;k++){
+                    if(j != 0 && k != i){
+                        Menor[c1][c2] = m1[j][k];
+                        c2++;
+                        if(c2>n-2){
+                            c1++;
+                            c2=0;
+                        }
+                    }
+                }
+            }
+            determinante = determinante + O*(m1[0][i]*det(Menor,n-1));
+            O=-1*O;
+        }
+    }
+    return determinante;
 }
