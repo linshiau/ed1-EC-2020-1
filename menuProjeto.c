@@ -3,19 +3,18 @@
 #include <conio.h>
 #include <locale.h>
 
- main()
-{
+
+ main(){
+
 int opcao;
     inicio:
     system("cls");
     setlocale( LC_ALL, "" );
-    system("color 0F");
     printf("1 - MULTIPLICA플O DE MATRIZES \n2 - SOMA DE MATRIZES \n3 - MATRIZ INVERSA \n4 - ESCALONAMENTO DE MATRIZ\n5 - MULTIPLICA플O POR ESCALAR \n6 - MATRIZ TRANSPOSTA \n7 - SUBTRA플O DE MATRIZES \n8 - DETERMINANTE DE MATRIZES \n9 - OP합ES \n10 SAIR ");
     opcao = getch();
     switch (opcao) {
     case '1':
         system("cls");
-
             int i1, j1, i2, j2, i, j, k, n, resultado, m1[50][50], m2[50][50], m3[50][50];
 
               printf("\n==========MULTIPLICACAO DE MATRIZES==========\n");
@@ -160,8 +159,6 @@ int opcao;
                 }
                 printf("\n");
               return(0);
-
-
         break;
     case '6':
         system("cls");
@@ -282,6 +279,44 @@ int opcao;
 
         break;
     case '10':
+        system("cls");
+        printf("\n==========MATRIZ OPOSTA==========\n");
+              printf("\nMatriz 1\n==========\n");
+              printf("\nDigite o numero de linhas...: ");
+              scanf("%d", &i1);
+              printf("Digite o numero de colunas..: ");
+              scanf("%d", &j1);
+                printf("\nValores da Matriz 1\n=====================\n\n");
+                for (i=0; i<i1; i++) {
+                  for(j=0; j<j1; j++) {
+                    printf("Digite um valor para [%d][%d].: ", (i+1), (j+1));
+                    scanf("%d", &m1[i][j]);
+                  }
+                }
+                printf("\nMatriz Original\n=====================\n\n");
+                for (i=0; i<i1; i++) {
+                  for (j=0; j<j1; j++) {
+                    printf("%d ", m1[i][j]);
+                  }
+                  printf("\n");
+                }
+                printf("\n");
+                for (i=0;i<i1; i++) {
+                  for (j=0; j<j1; j++) {
+                      m3[i][j] = m1[i][j] * (-1);
+                  }
+                }
+                printf("\nMatriz Oposta\n=====================\n\n");
+                for (i=0; i<i1; i++) {
+                  for (j=0; j<j1; j++) {
+                    printf("%d ", m3[i][j]);
+                  }
+                  printf("\n");
+                }
+                printf("\n");
+              return(0);
+        break;
+    case '11':
         system("cls");
 
         break;
