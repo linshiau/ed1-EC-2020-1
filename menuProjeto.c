@@ -1,13 +1,16 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <conio.h>
+#include <locale.h>
+
  main()
 {
 int opcao;
     inicio:
     system("cls");
+    setlocale( LC_ALL, "" );
     system("color 0F");
-    printf("1 - MULTIPLICACAO DE MATRIZES \n2 - SOMA DE MATRIZES \n3 - ESCALONAMENTO DE MATRIZ \n4 - MATRIZ INVERSA\n5 - MULTIPLICACAO POR ESCALAR \n6 - MATRIZ TRANSPOSTA \n7 - SUBTRACAO DE MATRIZES \n8 - DETERMINANTE DE MATRIZES \n9 - SAIR");
+    printf("1 - MULTIPLICAÇÃO DE MATRIZES \n2 - SOMA DE MATRIZES \n3 - MATRIZ INVERSA \n4 - ESCALONAMENTO DE MATRIZ\n5 - MULTIPLICAÇÃO POR ESCALAR \n6 - MATRIZ TRANSPOSTA \n7 - SUBTRAÇÃO DE MATRIZES \n8 - DETERMINANTE DE MATRIZES \n9 - OPÇÕES \n10 SAIR ");
     opcao = getch();
     switch (opcao) {
     case '1':
@@ -122,6 +125,7 @@ int opcao;
         break;
     case '4':
         system("cls");
+        metodoDeGauss ();
 
         break;
     case '5':
@@ -270,12 +274,19 @@ int opcao;
         printf("\nDeterminante da matriz \n=====================\n");
         printf("\n     det = %d\n",resultado);
         break;
-    case '9':
+
+        case '9':
+        system("cls");
+        printf("===================== OPCÕES =====================\n\n");
+        aparencia ();
+
+        break;
+    case '10':
         system("cls");
 
         break;
     default:
-        printf("voce deve escolher uma opcao valida\n");
+        printf("Você deve escolher uma opcão válida\n");
         printf("Precione qualquer tecla para voltar ao menu\n");
         system("pause");
         goto inicio;
@@ -313,4 +324,82 @@ int det(int m1[50][50], int n){
         }
     }
     return determinante;
+}
+
+int metodoDeGauss (){
+    setlocale( LC_ALL, "" );
+    int aux, j, k, ordem;
+    float A[20][20], c, x[10], soma=0.0;
+    printf("\n========== Método de Gauss: Escalonamento e Resolução ==========");
+    printf("\n\nEscreva a ordem da Matriz: ");
+    scanf("%d", &ordem);
+    printf("Escreva os elementos da Matriz aumentada:\n\n");
+
+    for(aux = 1; aux<=ordem; aux++){
+        for ( j=1; j<=(ordem+1); j++){
+            printf("A[%d][%d] : ", aux, j);
+            scanf("%f", &A[aux][j]);
+        }
+    }
+    for(j=1; j<=ordem; j++){
+        for(aux=1; aux<=ordem; aux++){
+            if(aux>j){
+                c= - (A[aux][j] / A[j][j]);
+                for(k=1; k<=ordem+1; k++){
+                    A[aux][k] = c*A[j][k]+ A[aux][k];
+
+                }
+            }
+        }
+    }
+
+    for(aux=1; aux<=ordem;aux++){
+        for(j=1; j<=ordem+1; j++){
+            if(j!=ordem+1){
+                printf("%0.0f ", A[aux][j]);
+            }
+            else{
+                printf("%0.0f \n", A[aux][j]);
+            }
+        }
+    }
+
+    x[ordem] = A[ordem][ordem+1]/A[ordem][ordem];
+
+    for (aux=ordem-1; aux>=1; aux--){
+        soma=0;
+        for(j=aux+1; j<=ordem; j++){
+            soma = soma+ A[aux][j]*x[j];
+            }
+        x[aux] = (A[aux][ordem+1]- soma) / A[aux][aux];
+    }
+    printf("\nA solução do Sistema Linear é: \n");
+    for (aux=1; aux<=ordem; aux++){
+        printf("\nx%d = %0.0f\t", aux,x[aux]); //impressão das soluções
+    }
+    return(0);
+}
+
+int aparencia () {
+
+    int x;
+    printf ("1 - Aparência Claro\n");
+    printf ("2 - Aparência Escura\n");
+    printf("\nDigite o aparência desejada: \n");
+    scanf("%i", &x);
+        while (x > 0 && x < 3){
+                if (x == 1)
+                system ("color 70");
+                else if (x == 2)
+                system ("color 0F");
+        }
+            if (x == 10)
+                printf ("Obrigado\n");
+            else if (x != 1)
+                    printf("\nNúmero Inválido\n");
+            else if (x != 2)
+                    printf("\nNúmero Inválido\n");
+
+            return 0;
+
 }
