@@ -10,13 +10,12 @@ int opcao;
     inicio:
     system("cls");
     setlocale( LC_ALL, "" );
-    printf("1 - MULTIPLICAÇÃO DE MATRIZES \n2 - SOMA DE MATRIZES \n3 - MATRIZ INVERSA \n4 - ESCALONAMENTO DE MATRIZ\n5 - MULTIPLICAÇÃO POR ESCALAR \n6 - MATRIZ TRANSPOSTA \n7 - SUBTRAÇÃO DE MATRIZES \n8 - DETERMINANTE DE MATRIZES \n9 - OPÇÕES \n10 SAIR ");
+    printf("A - MULTIPLICAÇÃO DE MATRIZES \nB - SOMA DE MATRIZES \nC - MATRIZ INVERSA \nD - ESCALONAMENTO DE MATRIZ\nE - MULTIPLICAÇÃO POR ESCALAR \nF - MATRIZ TRANSPOSTA \nG - SUBTRAÇÃO DE MATRIZES \nH - DETERMINANTE DE MATRIZES \nI - MATRIZ OPOSTA \nJ - SAIR \nK - OPÇÕES ");
     opcao = getch();
     switch (opcao) {
-    case '1':
+    case 'A':
         system("cls");
             int i1, j1, i2, j2, i, j, k, n, resultado, m1[50][50], m2[50][50], m3[50][50];
-
               printf("\n==========MULTIPLICACAO DE MATRIZES==========\n");
               printf("\nMatriz 1\n==========\n");
               printf("\nDigite o numero de linhas...: ");
@@ -64,9 +63,8 @@ int opcao;
                 }
               return(0);
         break;
-    case '2':
+    case 'B':
         system("cls");
-
         printf("\n==========SOMA DE MATRIZES==========\n");
               printf("\nMatriz 1\n==========\n");
               printf("\nDigite o numero de linhas...: ");
@@ -113,23 +111,15 @@ int opcao;
                 }
               return(0);
         break;
-    case '3':
+    case 'C':
         system("cls");
-
-        void inicializaMatriz(float ***m, int *numLin, int *numCol);
-        void imprimeMatriz(float **m, int numLin, int numCol);
-        void escalonaMatriz(float **m, int tamLin, int tamCol);
-        void analisaMatrizEscalonada(float **m, int tamLin, int tamCol);
-
         break;
-    case '4':
+    case 'D':
         system("cls");
         metodoDeGauss ();
-
         break;
-    case '5':
+    case 'E':
         system("cls");
-
         printf("\n==========MULTIPLICACAO POR ESCALAR==========\n");
               printf("\nMatriz 1\n==========\n");
               printf("\nDigite o numero de linhas...: ");
@@ -160,9 +150,8 @@ int opcao;
                 printf("\n");
               return(0);
         break;
-    case '6':
+    case 'F':
         system("cls");
-
         printf("\n==========MATRIZ TRANSPOSTA==========\n");
               printf("\nMatriz 1\n==========\n");
               printf("\nDigite o numero de linhas...: ");
@@ -199,7 +188,7 @@ int opcao;
                 printf("\n");
               return(0);
         break;
-    case '7':
+    case 'G':
         system("cls");
         printf("\n==========SUBTRACAO DE MATRIZES==========\n");
               printf("\nMatriz 1\n==========\n");
@@ -246,9 +235,8 @@ int opcao;
                   printf("\nErro! Impossivel somar as matrizes informadas.\n");
                 }
               return(0);
-
         break;
-    case '8':
+    case 'H':
         system("cls");
         printf("\n==========DETERMINANTE DE MATRIZES==========\n");
         printf("\nMatriz 1\n==========\n");
@@ -271,14 +259,7 @@ int opcao;
         printf("\nDeterminante da matriz \n=====================\n");
         printf("\n     det = %d\n",resultado);
         break;
-
-        case '9':
-        system("cls");
-        printf("===================== OPCÕES =====================\n\n");
-        aparencia ();
-
-        break;
-    case '10':
+        case 'I':
         system("cls");
         printf("\n==========MATRIZ OPOSTA==========\n");
               printf("\nMatriz 1\n==========\n");
@@ -316,9 +297,15 @@ int opcao;
                 printf("\n");
               return(0);
         break;
-    case '11':
+    case 'J':
         system("cls");
-
+        //SAIR
+        break;
+    case 'K':
+        system("cls");
+        system("cls");
+        printf("===================== OPCÕES =====================\n\n");
+        aparencia ();
         break;
     default:
         printf("Você deve escolher uma opcão válida\n");
