@@ -136,7 +136,7 @@ int opcao;
                 printf("Digite um escalar : ");
                     scanf("%d", &k);
                 for (i=0;i<i1; i++) {
-                  for (j=0; j<i1; j++) {
+                  for (j=0; j<j1; j++) {
                       m3[i][j] = m1[i][j] * k;
                   }
                 }
