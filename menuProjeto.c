@@ -3,9 +3,7 @@
 #include <conio.h>
 #include <locale.h>
 
-
  main(){
-
 int opcao;
     inicio:
     system("cls");
@@ -112,8 +110,11 @@ int opcao;
               return(0);
         break;
     case 'C':
+        {
         system("cls");
+        matrizInversa2();
         break;
+        }
     case 'D':
         system("cls");
         metodoDeGauss ();
@@ -222,7 +223,6 @@ int opcao;
                   }
                 }
                 printf("\nMatriz 3\n=====================\n\n");
-
                 for (i=0; i<i1; i++) {
                   for (j=0; j<j2; j++) {
                     printf("%d ", m3[i][j]);
@@ -356,7 +356,6 @@ int metodoDeGauss (){
     printf("\n\nEscreva a ordem da Matriz: ");
     scanf("%d", &ordem);
     printf("Escreva os elementos da Matriz aumentada:\n\n");
-
     for(aux = 1; aux<=ordem; aux++){
         for ( j=1; j<=(ordem+1); j++){
             printf("A[%d][%d] : ", aux, j);
@@ -369,12 +368,10 @@ int metodoDeGauss (){
                 c= - (A[aux][j] / A[j][j]);
                 for(k=1; k<=ordem+1; k++){
                     A[aux][k] = c*A[j][k]+ A[aux][k];
-
                 }
             }
         }
     }
-
     for(aux=1; aux<=ordem;aux++){
         for(j=1; j<=ordem+1; j++){
             if(j!=ordem+1){
@@ -385,9 +382,7 @@ int metodoDeGauss (){
             }
         }
     }
-
     x[ordem] = A[ordem][ordem+1]/A[ordem][ordem];
-
     for (aux=ordem-1; aux>=1; aux--){
         soma=0;
         for(j=aux+1; j<=ordem; j++){
@@ -403,7 +398,6 @@ int metodoDeGauss (){
 }
 
 int aparencia () {
-
     int x;
     printf ("1 - Aparência Claro\n");
     printf ("2 - Aparência Escura\n");
@@ -421,7 +415,133 @@ int aparencia () {
                     printf("\nNúmero Inválido\n");
             else if (x != 2)
                     printf("\nNúmero Inválido\n");
-
             return 0;
+}
+float determinanteInversa(float a[][25], float k);
+void cofator(float [][25], float);
+void transposta(float [][25], float [][25], float);
+int matrizInversa2()
+{
+  float a[25][25], k, d;
+  int i, j;
+  printf("Digite a ordem da matriz quadrada : ");
+  scanf("%f", &k);
+  printf("digite os elementos da matriz %.0fX%.0f: \n", k, k);
+  for (i = 0;i < k; i++)
+    {
+     for (j = 0;j < k; j++)
+       {
+        scanf("%f", &a[i][j]);
+        }
+    }
+  d = determinanteInversa(a, k);
+  if (d == 0)
+   printf("\nMatriz inversa dos valores recebidos nao eh possivel\n");
+  else
+   cofator(a, k);
+}
 
+float determinanteInversa(float a[25][25], float k)
+{
+  float s = 1, det = 0, b[25][25];
+  int i, j, m, n, c;
+  if (k == 1)
+    {
+     return (a[0][0]);
+    }
+  else
+    {
+     det = 0;
+     for (c = 0; c < k; c++)
+       {
+        m = 0;
+        n = 0;
+        for (i = 0;i < k; i++)
+          {
+            for (j = 0 ;j < k; j++)
+              {
+                b[i][j] = 0;
+                if (i != 0 && j != c)
+                 {
+                   b[m][n] = a[i][j];
+                   if (n < (k - 2))
+                    n++;
+                   else
+                    {
+                     n = 0;
+                     m++;
+                     }
+                   }
+               }
+             }
+          det = det + s * (a[0][c] * determinanteInversa(b, k - 1));
+          s = -1 * s;
+          }
+    }
+    return (det);
+}
+
+void cofator(float num[25][25], float f)
+{
+ float b[25][25], fac[25][25];
+ int p, q, m, n, i, j;
+ for (q = 0;q < f; q++)
+ {
+   for (p = 0;p < f; p++)
+    {
+     m = 0;
+     n = 0;
+     for (i = 0;i < f; i++)
+     {
+       for (j = 0;j < f; j++)
+        {
+          if (i != q && j != p)
+          {
+            b[m][n] = num[i][j];
+            if (n < (f - 2))
+             n++;
+            else
+             {
+               n = 0;
+               m++;
+               }
+            }
+        }
+      }
+      fac[q][p] = pow(-1, q + p) * determinanteInversa(b, f - 1);
+    }
+  }
+  transposta(num, fac, f);
+}
+
+void transposta(float num[25][25], float fac[25][25], float r)
+{
+  int i, j;
+  float b[25][25], inversa[25][25], d;
+
+  for (i = 0;i < r; i++)
+    {
+     for (j = 0;j < r; j++)
+       {
+         b[i][j] = fac[j][i];
+        }
+    }
+  d = determinanteInversa(num, r);
+  for (i = 0;i < r; i++)
+    {
+     for (j = 0;j < r; j++)
+       {
+        inversa[i][j] = b[i][j] / d;
+        }
+    }
+   printf("\n\n\nA matriz inversa eh : \n");
+
+   for (i = 0;i < r; i++)
+    {
+     for (j = 0;j < r; j++)
+       {
+         printf("\t%f", inversa[i][j]);
+        }
+    printf("\n");
+     }
 }
