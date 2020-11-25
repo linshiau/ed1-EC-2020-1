@@ -8,311 +8,309 @@ int opcao;
     inicio:
     system("cls");
     setlocale( LC_ALL, "" );
-    printf("A - MULTIPLICAÇÃO DE MATRIZES \nB - SOMA DE MATRIZES \nC - MATRIZ INVERSA \nD - ESCALONAMENTO DE MATRIZ\nE - MULTIPLICAÇÃO POR ESCALAR \nF - MATRIZ TRANSPOSTA \nG - SUBTRAÇÃO DE MATRIZES \nH - DETERMINANTE DE MATRIZES \nI - MATRIZ OPOSTA \nJ - SAIR \nK - OPÇÕES ");
-    opcao = getch();
-    switch (opcao) {
-    case 'A':
-        system("cls");
-            int i1, j1, i2, j2, i, j, k, n, resultado, m1[50][50], m2[50][50], m3[50][50];
-              printf("\n==========MULTIPLICACAO DE MATRIZES==========\n");
-              printf("\nMatriz 1\n==========\n");
-              printf("\nDigite o numero de linhas...: ");
-              scanf("%d", &i1);
-              printf("Digite o numero de colunas..: ");
-              scanf("%d", &j1);
-              printf("\nMatriz 2\n==========\n");
-              printf("\nDigite o numero de linhas...: ");
-              scanf("%d", &i2);
-              printf("Digite o numero de colunas..: ");
-              scanf("%d", &j2);
-              if (j1 == i2) {
-                printf("\nValores da Matriz 1\n=====================\n\n");
-                for (i=0; i<i1; i++) {
-                  for(j=0; j<j1; j++) {
-                    printf("Digite um valor para [%d][%d].: ", (i+1), (j+1));
-                    scanf("%d", &m1[i][j]);
-                  }
-                }
-                printf("\nValores da Matriz 2\n=====================\n\n");
-                for (i=0; i<i2; i++) {
-                  for (j=0; j<j2; j++) {
-                    printf("Digite um valor para [%d][%d].: ", (i+1), (j+1));
-                    scanf("%d", &m2[i][j]);
-                  }
-                }
-                for (i=0;i<i1; i++) {
-                  for (j=0; j<i1; j++) {
-                    for (k=0; k<j1; k++) {
-                      m3[i][j] = m3[i][j] + (m1[i][k] * m2[k][j]);
-                    }
-                  }
-                }
-                printf("\nMatriz 3\n=====================\n\n");
-                for (i=0; i<i1; i++) {
-                  for (j=0; j<j2; j++) {
-                    printf("%d ", m3[i][j]);
-                  }
-                  printf("\n");
-                }
-                printf("\n");
-              }
-              else {
-                  printf("\nErro! Impossivel multiplicar as matrizes informadas.\n");
-                }
-              return(0);
-        break;
-    case 'B':
-        system("cls");
-        printf("\n==========SOMA DE MATRIZES==========\n");
-              printf("\nMatriz 1\n==========\n");
-              printf("\nDigite o numero de linhas...: ");
-              scanf("%d", &i1);
-              printf("Digite o numero de colunas..: ");
-              scanf("%d", &j1);
-              printf("\nMatriz 2\n==========\n");
-              printf("\nDigite o numero de linhas...: ");
-              scanf("%d", &i2);
-              printf("Digite o numero de colunas..: ");
-              scanf("%d", &j2);
-              if (j1 == i2) {
-                printf("\nValores da Matriz 1\n=====================\n\n");
-                for (i=0; i<i1; i++) {
-                  for(j=0; j<j1; j++) {
-                    printf("Digite um valor para [%d][%d].: ", (i+1), (j+1));
-                    scanf("%d", &m1[i][j]);
-                  }
-                }
-                printf("\nValores da Matriz 2\n=====================\n\n");
-                for (i=0; i<i2; i++) {
-                  for (j=0; j<j2; j++) {
-                    printf("Digite um valor para [%d][%d].: ", (i+1), (j+1));
-                    scanf("%d", &m2[i][j]);
-                  }
-                }
-                for (i=0;i<i1; i++) {
-                  for (j=0; j<i1; j++) {
-                      m3[i][j] = m3[i][j] + (m1[i][j] + m2[i][j]);
-                  }
-                }
-                printf("\nMatriz 3\n=====================\n\n");
-
-                for (i=0; i<i1; i++) {
-                  for (j=0; j<j2; j++) {
-                    printf("%d ", m3[i][j]);
-                  }
-                  printf("\n");
-                }
-                printf("\n");
-              }
-              else {
-                  printf("\nErro! Impossivel somar as matrizes informadas.\n");
-                }
-              return(0);
-        break;
-    case 'C':
-        {
-        system("cls");
-        matrizInversa2();
-        break;
-        }
-    case 'D':
-        system("cls");
-        metodoDeGauss ();
-        break;
-    case 'E':
-        system("cls");
-        printf("\n==========MULTIPLICACAO POR ESCALAR==========\n");
-              printf("\nMatriz 1\n==========\n");
-              printf("\nDigite o numero de linhas...: ");
-              scanf("%d", &i1);
-              printf("Digite o numero de colunas..: ");
-              scanf("%d", &j1);
-                printf("\nValores da Matriz 1\n=====================\n\n");
-                for (i=0; i<i1; i++) {
-                  for(j=0; j<j1; j++) {
-                    printf("Digite um valor para [%d][%d].: ", (i+1), (j+1));
-                    scanf("%d", &m1[i][j]);
-                  }
-                }
-                printf("Digite um escalar : ");
-                    scanf("%d", &k);
-                for (i=0;i<i1; i++) {
-                  for (j=0; j<j1; j++) {
-                      m3[i][j] = m1[i][j] * k;
-                  }
-                }
-                printf("\nMatriz 3\n=====================\n\n");
-                for (i=0; i<i1; i++) {
-                  for (j=0; j<j1; j++) {
-                    printf("%d ", m3[i][j]);
-                  }
-                  printf("\n");
-                }
-                printf("\n");
-              return(0);
-        break;
-    case 'F':
-        system("cls");
-        printf("\n==========MATRIZ TRANSPOSTA==========\n");
-              printf("\nMatriz 1\n==========\n");
-              printf("\nDigite o numero de linhas...: ");
-              scanf("%d", &i1);
-              printf("Digite o numero de colunas..: ");
-              scanf("%d", &j1);
-                printf("\nValores da Matriz 1\n=====================\n\n");
-                for (i=0; i<i1; i++) {
-                  for(j=0; j<j1; j++) {
-                    printf("Digite um valor para [%d][%d].: ", (i+1), (j+1));
-                    scanf("%d", &m1[i][j]);
-                  }
-                }
-                for (i=0;i<j1; i++) {
-                  for (j=0; j<i1; j++) {
-                      m3[i][j] = m1[j][i];
-                  }
-                }
-                printf("\nMatriz Original\n=====================\n\n");
-                for (i=0; i<i1; i++) {
-                  for (j=0; j<j1; j++) {
-                    printf("%d ", m1[i][j]);
-                  }
-                  printf("\n");
-                }
-                printf("\n");
-                printf("\nMatriz Transposta\n=====================\n\n");
-                for (i=0; i<j1; i++) {
-                  for (j=0; j<i1; j++) {
-                    printf("%d ", m3[i][j]);
-                  }
-                  printf("\n");
-                }
-                printf("\n");
-              return(0);
-        break;
-    case 'G':
-        system("cls");
-        printf("\n==========SUBTRACAO DE MATRIZES==========\n");
-              printf("\nMatriz 1\n==========\n");
-              printf("\nDigite o numero de linhas...: ");
-              scanf("%d", &i1);
-              printf("Digite o numero de colunas..: ");
-              scanf("%d", &j1);
-              printf("\nMatriz 2\n==========\n");
-              printf("\nDigite o numero de linhas...: ");
-              scanf("%d", &i2);
-              printf("Digite o numero de colunas..: ");
-              scanf("%d", &j2);
-              if (j1 == i2) {
-                printf("\nValores da Matriz 1\n=====================\n\n");
-                for (i=0; i<i1; i++) {
-                  for(j=0; j<j1; j++) {
-                    printf("Digite um valor para [%d][%d].: ", (i+1), (j+1));
-                    scanf("%d", &m1[i][j]);
-                  }
-                }
-                printf("\nValores da Matriz 2\n=====================\n\n");
-                for (i=0; i<i2; i++) {
-                  for (j=0; j<j2; j++) {
-                    printf("Digite um valor para [%d][%d].: ", (i+1), (j+1));
-                    scanf("%d", &m2[i][j]);
-                  }
-                }
-                for (i=0;i<i1; i++) {
-                  for (j=0; j<i1; j++) {
-                      m3[i][j] = m3[i][j] + (m1[i][j] - m2[i][j]);
-                  }
-                }
-                printf("\nMatriz 3\n=====================\n\n");
-                for (i=0; i<i1; i++) {
-                  for (j=0; j<j2; j++) {
-                    printf("%d ", m3[i][j]);
-                  }
-                  printf("\n");
-                }
-                printf("\n");
-              }
-              else {
-                  printf("\nErro! Impossivel somar as matrizes informadas.\n");
-                }
-              return(0);
-        break;
-    case 'H':
-        system("cls");
-        printf("\n==========DETERMINANTE DE MATRIZES==========\n");
-        printf("\nMatriz 1\n==========\n");
-        printf("\nDigite a ordem da matriz...: ");
-        scanf("%d",&n);
-        printf("\nValores da Matriz 1\n=====================\n\n");
-                    for (i=0; i<n; i++) {
-                      for(j=0; j<n; j++) {
+    do{
+        printf("A - MULTIPLICAÇÃO DE MATRIZES \nB - SOMA DE MATRIZES \nC - MATRIZ INVERSA \nD - ESCALONAMENTO DE MATRIZ\nE - MULTIPLICAÇÃO POR ESCALAR \nF - MATRIZ TRANSPOSTA \nG - SUBTRAÇÃO DE MATRIZES \nH - DETERMINANTE DE MATRIZES \nI - MATRIZ OPOSTA \nJ - SAIR \nK - OPÇÕES ");
+        opcao = getch();
+        switch (toupper(opcao)){
+        case 'A':
+            system("cls");
+                int i1, j1, i2, j2, i, j, k, n, resultado, m1[50][50], m2[50][50], m3[50][50];
+                  printf("\n==========MULTIPLICACAO DE MATRIZES==========\n");
+                  printf("\nMatriz 1\n==========\n");
+                  printf("\nDigite o numero de linhas...: ");
+                  scanf("%d", &i1);
+                  printf("Digite o numero de colunas..: ");
+                  scanf("%d", &j1);
+                  printf("\nMatriz 2\n==========\n");
+                  printf("\nDigite o numero de linhas...: ");
+                  scanf("%d", &i2);
+                  printf("Digite o numero de colunas..: ");
+                  scanf("%d", &j2);
+                  if (j1 == i2) {
+                    printf("\nValores da Matriz 1\n=====================\n\n");
+                    for (i=0; i<i1; i++) {
+                      for(j=0; j<j1; j++) {
                         printf("Digite um valor para [%d][%d].: ", (i+1), (j+1));
                         scanf("%d", &m1[i][j]);
                       }
                     }
-        for(i=0;i<n;i++){
-            for(j=0;j<n;j++){
-                printf("%5d",m1[i][j]);
+                    printf("\nValores da Matriz 2\n=====================\n\n");
+                    for (i=0; i<i2; i++) {
+                      for (j=0; j<j2; j++) {
+                        printf("Digite um valor para [%d][%d].: ", (i+1), (j+1));
+                        scanf("%d", &m2[i][j]);
+                      }
+                    }
+                    for (i=0;i<i1; i++) {
+                      for (j=0; j<i1; j++) {
+                        for (k=0; k<j1; k++) {
+                          m3[i][j] = m3[i][j] + (m1[i][k] * m2[k][j]);
+                        }
+                      }
+                    }
+                    printf("\nMatriz 3\n=====================\n\n");
+                    for (i=0; i<i1; i++) {
+                      for (j=0; j<j2; j++) {
+                        printf("%d ", m3[i][j]);
+                      }
+                      printf("\n");
+                    }
+                    printf("\n");
+                  }
+                  else {
+                      printf("\nErro! Impossivel multiplicar as matrizes informadas.\n");
+                    }
+            break;
+        case 'B':
+            system("cls");
+            printf("\n==========SOMA DE MATRIZES==========\n");
+                  printf("\nMatriz 1\n==========\n");
+                  printf("\nDigite o numero de linhas...: ");
+                  scanf("%d", &i1);
+                  printf("Digite o numero de colunas..: ");
+                  scanf("%d", &j1);
+                  printf("\nMatriz 2\n==========\n");
+                  printf("\nDigite o numero de linhas...: ");
+                  scanf("%d", &i2);
+                  printf("Digite o numero de colunas..: ");
+                  scanf("%d", &j2);
+                  if (j1 == i2) {
+                    printf("\nValores da Matriz 1\n=====================\n\n");
+                    for (i=0; i<i1; i++) {
+                      for(j=0; j<j1; j++) {
+                        printf("Digite um valor para [%d][%d].: ", (i+1), (j+1));
+                        scanf("%d", &m1[i][j]);
+                      }
+                    }
+                    printf("\nValores da Matriz 2\n=====================\n\n");
+                    for (i=0; i<i2; i++) {
+                      for (j=0; j<j2; j++) {
+                        printf("Digite um valor para [%d][%d].: ", (i+1), (j+1));
+                        scanf("%d", &m2[i][j]);
+                      }
+                    }
+                    for (i=0;i<i1; i++) {
+                      for (j=0; j<i1; j++) {
+                          m3[i][j] = m3[i][j] + (m1[i][j] + m2[i][j]);
+                      }
+                    }
+                    printf("\nMatriz 3\n=====================\n\n");
+
+                    for (i=0; i<i1; i++) {
+                      for (j=0; j<j2; j++) {
+                        printf("%d ", m3[i][j]);
+                      }
+                      printf("\n");
+                    }
+                    printf("\n");
+                  }
+                  else {
+                      printf("\nErro! Impossivel somar as matrizes informadas.\n");
+                    }
+            break;
+        case 'C':
+            {
+            system("cls");
+            matrizInversa2();
+            break;
             }
-            printf("\n");
+        case 'D':
+            system("cls");
+            metodoDeGauss ();
+            break;
+        case 'E':
+            system("cls");
+            printf("\n==========MULTIPLICACAO POR ESCALAR==========\n");
+                  printf("\nMatriz 1\n==========\n");
+                  printf("\nDigite o numero de linhas...: ");
+                  scanf("%d", &i1);
+                  printf("Digite o numero de colunas..: ");
+                  scanf("%d", &j1);
+                    printf("\nValores da Matriz 1\n=====================\n\n");
+                    for (i=0; i<i1; i++) {
+                      for(j=0; j<j1; j++) {
+                        printf("Digite um valor para [%d][%d].: ", (i+1), (j+1));
+                        scanf("%d", &m1[i][j]);
+                      }
+                    }
+                    printf("Digite um escalar : ");
+                        scanf("%d", &k);
+                    for (i=0;i<i1; i++) {
+                      for (j=0; j<j1; j++) {
+                          m3[i][j] = m1[i][j] * k;
+                      }
+                    }
+                    printf("\nMatriz 3\n=====================\n\n");
+                    for (i=0; i<i1; i++) {
+                      for (j=0; j<j1; j++) {
+                        printf("%d ", m3[i][j]);
+                      }
+                      printf("\n");
+                    }
+                    printf("\n");
+            break;
+        case 'F':
+            system("cls");
+            printf("\n==========MATRIZ TRANSPOSTA==========\n");
+                  printf("\nMatriz 1\n==========\n");
+                  printf("\nDigite o numero de linhas...: ");
+                  scanf("%d", &i1);
+                  printf("Digite o numero de colunas..: ");
+                  scanf("%d", &j1);
+                    printf("\nValores da Matriz 1\n=====================\n\n");
+                    for (i=0; i<i1; i++) {
+                      for(j=0; j<j1; j++) {
+                        printf("Digite um valor para [%d][%d].: ", (i+1), (j+1));
+                        scanf("%d", &m1[i][j]);
+                      }
+                    }
+                    for (i=0;i<j1; i++) {
+                      for (j=0; j<i1; j++) {
+                          m3[i][j] = m1[j][i];
+                      }
+                    }
+                    printf("\nMatriz Original\n=====================\n\n");
+                    for (i=0; i<i1; i++) {
+                      for (j=0; j<j1; j++) {
+                        printf("%d ", m1[i][j]);
+                      }
+                      printf("\n");
+                    }
+                    printf("\n");
+                    printf("\nMatriz Transposta\n=====================\n\n");
+                    for (i=0; i<j1; i++) {
+                      for (j=0; j<i1; j++) {
+                        printf("%d ", m3[i][j]);
+                      }
+                      printf("\n");
+                    }
+                    printf("\n");
+            break;
+        case 'G':
+            system("cls");
+            printf("\n==========SUBTRACAO DE MATRIZES==========\n");
+                  printf("\nMatriz 1\n==========\n");
+                  printf("\nDigite o numero de linhas...: ");
+                  scanf("%d", &i1);
+                  printf("Digite o numero de colunas..: ");
+                  scanf("%d", &j1);
+                  printf("\nMatriz 2\n==========\n");
+                  printf("\nDigite o numero de linhas...: ");
+                  scanf("%d", &i2);
+                  printf("Digite o numero de colunas..: ");
+                  scanf("%d", &j2);
+                  if (j1 == i2) {
+                    printf("\nValores da Matriz 1\n=====================\n\n");
+                    for (i=0; i<i1; i++) {
+                      for(j=0; j<j1; j++) {
+                        printf("Digite um valor para [%d][%d].: ", (i+1), (j+1));
+                        scanf("%d", &m1[i][j]);
+                      }
+                    }
+                    printf("\nValores da Matriz 2\n=====================\n\n");
+                    for (i=0; i<i2; i++) {
+                      for (j=0; j<j2; j++) {
+                        printf("Digite um valor para [%d][%d].: ", (i+1), (j+1));
+                        scanf("%d", &m2[i][j]);
+                      }
+                    }
+                    for (i=0;i<i1; i++) {
+                      for (j=0; j<i1; j++) {
+                          m3[i][j] = m3[i][j] + (m1[i][j] - m2[i][j]);
+                      }
+                    }
+                    printf("\nMatriz 3\n=====================\n\n");
+                    for (i=0; i<i1; i++) {
+                      for (j=0; j<j2; j++) {
+                        printf("%d ", m3[i][j]);
+                      }
+                      printf("\n");
+                    }
+                    printf("\n");
+                  }
+                  else {
+                      printf("\nErro! Impossivel somar as matrizes informadas.\n");
+                    }
+            break;
+        case 'H':
+            system("cls");
+            printf("\n==========DETERMINANTE DE MATRIZES==========\n");
+            printf("\nMatriz 1\n==========\n");
+            printf("\nDigite a ordem da matriz...: ");
+            scanf("%d",&n);
+            printf("\nValores da Matriz 1\n=====================\n\n");
+                        for (i=0; i<n; i++) {
+                          for(j=0; j<n; j++) {
+                            printf("Digite um valor para [%d][%d].: ", (i+1), (j+1));
+                            scanf("%d", &m1[i][j]);
+                          }
+                        }
+            for(i=0;i<n;i++){
+                for(j=0;j<n;j++){
+                    printf("%5d",m1[i][j]);
+                }
+                printf("\n");
+            }
+            resultado = det(m1,n);
+            printf("\nDeterminante da matriz \n=====================\n");
+            printf("\n     det = %d\n",resultado);
+            break;
+            case 'I':
+            system("cls");
+            printf("\n==========MATRIZ OPOSTA==========\n");
+                  printf("\nMatriz 1\n==========\n");
+                  printf("\nDigite o numero de linhas...: ");
+                  scanf("%d", &i1);
+                  printf("Digite o numero de colunas..: ");
+                  scanf("%d", &j1);
+                    printf("\nValores da Matriz 1\n=====================\n\n");
+                    for (i=0; i<i1; i++) {
+                      for(j=0; j<j1; j++) {
+                        printf("Digite um valor para [%d][%d].: ", (i+1), (j+1));
+                        scanf("%d", &m1[i][j]);
+                      }
+                    }
+                    printf("\nMatriz Original\n=====================\n\n");
+                    for (i=0; i<i1; i++) {
+                      for (j=0; j<j1; j++) {
+                        printf("%d ", m1[i][j]);
+                      }
+                      printf("\n");
+                    }
+                    printf("\n");
+                    for (i=0;i<i1; i++) {
+                      for (j=0; j<j1; j++) {
+                          m3[i][j] = m1[i][j] * (-1);
+                      }
+                    }
+                    printf("\nMatriz Oposta\n=====================\n\n");
+                    for (i=0; i<i1; i++) {
+                      for (j=0; j<j1; j++) {
+                        printf("%d ", m3[i][j]);
+                      }
+                      printf("\n");
+                    }
+                    printf("\n");
+            break;
+        case 'J':
+            system("cls");
+            exit(0);
+            //SAIR
+            break;
+        case 'K':
+            system("cls");
+            system("cls");
+            printf("===================== OPCÕES =====================\n\n");
+            aparencia ();
+            system("cls");
+            break;
+        default:
+            printf("Você deve escolher uma opcão válida\n");
+            printf("Precione qualquer tecla para voltar ao menu\n");
+            system("pause");
+            goto inicio;
         }
-        resultado = det(m1,n);
-        printf("\nDeterminante da matriz \n=====================\n");
-        printf("\n     det = %d\n",resultado);
-        break;
-        case 'I':
-        system("cls");
-        printf("\n==========MATRIZ OPOSTA==========\n");
-              printf("\nMatriz 1\n==========\n");
-              printf("\nDigite o numero de linhas...: ");
-              scanf("%d", &i1);
-              printf("Digite o numero de colunas..: ");
-              scanf("%d", &j1);
-                printf("\nValores da Matriz 1\n=====================\n\n");
-                for (i=0; i<i1; i++) {
-                  for(j=0; j<j1; j++) {
-                    printf("Digite um valor para [%d][%d].: ", (i+1), (j+1));
-                    scanf("%d", &m1[i][j]);
-                  }
-                }
-                printf("\nMatriz Original\n=====================\n\n");
-                for (i=0; i<i1; i++) {
-                  for (j=0; j<j1; j++) {
-                    printf("%d ", m1[i][j]);
-                  }
-                  printf("\n");
-                }
-                printf("\n");
-                for (i=0;i<i1; i++) {
-                  for (j=0; j<j1; j++) {
-                      m3[i][j] = m1[i][j] * (-1);
-                  }
-                }
-                printf("\nMatriz Oposta\n=====================\n\n");
-                for (i=0; i<i1; i++) {
-                  for (j=0; j<j1; j++) {
-                    printf("%d ", m3[i][j]);
-                  }
-                  printf("\n");
-                }
-                printf("\n");
-              return(0);
-        break;
-    case 'J':
-        system("cls");
-        //SAIR
-        break;
-    case 'K':
-        system("cls");
-        system("cls");
-        printf("===================== OPCÕES =====================\n\n");
-        aparencia ();
-        break;
-    default:
-        printf("Você deve escolher uma opcão válida\n");
-        printf("Precione qualquer tecla para voltar ao menu\n");
-        system("pause");
-        goto inicio;
-    }
+    }while (1);
 }
 
 int det(int m1[50][50], int n){
@@ -399,23 +397,27 @@ int metodoDeGauss (){
 
 int aparencia () {
     int x;
-    printf ("1 - Aparência Claro\n");
-    printf ("2 - Aparência Escura\n");
-    printf("\nDigite o aparência desejada: \n");
-    scanf("%i", &x);
-        while (x > 0 && x < 3){
-                if (x == 1)
-                system ("color 70");
-                else if (x == 2)
-                system ("color 0F");
-        }
-            if (x == 10)
-                printf ("Obrigado\n");
-            else if (x != 1)
-                    printf("\nNúmero Inválido\n");
-            else if (x != 2)
-                    printf("\nNúmero Inválido\n");
-            return 0;
+    do
+    {
+        printf ("1 - Aparência Claro\n");
+        printf ("2 - Aparência Escura\n");
+        printf("\nDigite o aparência desejada: \n");
+        scanf("%i", &x);
+        //} while (x > 0 && x < 3);
+    }
+    while (x < 0 || x > 2);
+    if (x == 1)
+        system ("color 70");
+    else if (x == 2)
+        system ("color 0F");
+
+    if (x == 10)
+        printf ("Obrigado\n");
+    else if (x != 1)
+        printf("\nNúmero Inválido\n");
+    else if (x != 2)
+        printf("\nNúmero Inválido\n");
+    return 0;
 }
 float determinanteInversa(float a[][25], float k);
 void cofator(float [][25], float);
