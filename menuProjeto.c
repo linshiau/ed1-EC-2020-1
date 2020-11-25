@@ -4,7 +4,7 @@
 #include <locale.h>
 #include <math.h>
 
-main()
+main()//MENU DO PROJETO
 {
     int opcao;
 inicio:
@@ -16,41 +16,41 @@ inicio:
         opcao = getch();
         switch (toupper(opcao))
         {
-        case 'A':
+        case 'A'://MULTIPLICAÇAO DE MATRIZES
             system("cls");
             multMat();
             break;
-        case 'B':
+        case 'B'://SOMA DE MATRIZES
             system("cls");
             somaMat();
             break;
-        case 'C':
+        case 'C'://MATRIZ INVERSA
         {
             system("cls");
             matrizInversa2();
             break;
         }
-        case 'D':
+        case 'D'://ESCALONAMENTO DE MATRIZES
             system("cls");
             metodoDeGauss ();
             break;
-        case 'E':
+        case 'E'://MULTIPLAÇAO POR ESCALAR
             system("cls");
             multEsc();
             break;
-        case 'F':
+        case 'F'://MATRIZ TRANSPOSTA
             system("cls");
             matTranspt();
             break;
-        case 'G':
+        case 'G'://SUBTRAÇAO DE MATRIZES
             system("cls");
             subtraMat();
             break;
-        case 'H':
+        case 'H'://DETERMINANTE DE MATRIZES
             system("cls");
             determiMat();
             break;
-        case 'I':
+        case 'I'://MATRIZ OPOSTA
             system("cls");
             matOpos();
             break;
@@ -58,24 +58,24 @@ inicio:
             system("cls");
             exit(0);
             break;
-        case 'K':
+        case 'K'://OPÇOES DE COR DE PROGRAMA
             system("cls");
             system("cls");
             printf("===================== OPCÕES =====================\n\n");
             aparencia ();
             system("cls");
             break;
-        default:
+        default://OPÇAO INVALIDA
             printf("Você deve escolher uma opcão válida\n");
             printf("Precione qualquer tecla para voltar ao menu\n");
             system("pause");
             goto inicio;
         }
     }
-    while (1);
+    while (1);//DEIXAR MENU CONTINUO
 }
 
-int det(int matriz1[50][50], int n)
+int det(int matriz1[50][50], int n)//FUNÇAO DETERMINATE DE MATRIZES UTILIZANDO RECURSSAO UTILIZADO EM determiMat()
 {
     int Menor[50][50];
     int numLinha,numColuna,k,c1,c2;
@@ -116,7 +116,7 @@ int det(int matriz1[50][50], int n)
     return determinante;
 }
 
-int metodoDeGauss ()
+int metodoDeGauss ()//FUNÇAO ESCALONAMENTO DE MATRIZES
 {
     setlocale( LC_ALL, "" );
     int aux, numColuna, k, ordem;
@@ -174,12 +174,12 @@ int metodoDeGauss ()
     printf("\nA solução do Sistema Linear é: \n");
     for (aux=1; aux<=ordem; aux++)
     {
-        printf("\nx%d = %0.0f\t", aux,x[aux]); //impressão das soluções
+        printf("\nx%d = %0.0f\t", aux,x[aux]); //IMPRESSAO DAS SOLUÇOES
     }
     return(0);
 }
 
-int aparencia ()
+int aparencia ()//FUNÇAO APARENCIA DE CORES DO MENU
 {
     int x;
     do
@@ -206,7 +206,7 @@ int aparencia ()
 float determinanteInversa(float a[][25], float k);
 void cofator(float [][25], float);
 void transposta(float [][25], float [][25], float);
-int matrizInversa2()
+int matrizInversa2()//FUNÇAO MATRIZ INVERSA
 {
     float a[25][25], k, d;
     int numLinha, numColuna;
@@ -227,7 +227,7 @@ int matrizInversa2()
         cofator(a, k);
 }
 
-float determinanteInversa(float a[25][25], float k)
+float determinanteInversa(float a[25][25], float k)//FUÇAO DETERMINANTE USADA PARA INVERSA
 {
     float s = 1, det = 0, b[25][25];
     int numLinha, numColuna, m, n, c;
@@ -267,7 +267,7 @@ float determinanteInversa(float a[25][25], float k)
     return (det);
 }
 
-void cofator(float num[25][25], float f)
+void cofator(float num[25][25], float f)//FUNÇAO COFATOR USADA PARA CALCULO DE MATRIZ INVERSA
 {
     float b[25][25], fac[25][25];
     int p, q, m, n, numLinha, numColuna;
@@ -300,7 +300,7 @@ void cofator(float num[25][25], float f)
     transposta(num, fac, f);
 }
 
-void transposta(float num[25][25], float fac[25][25], float r)
+void transposta(float num[25][25], float fac[25][25], float r)//FUNÇAO TRANSPOSTA USADA PARA CALCULO DE MATRIZ INVERSA
 {
     int numLinha, numColuna;
     float b[25][25], inversa[25][25], d;
@@ -331,11 +331,11 @@ void transposta(float num[25][25], float fac[25][25], float r)
         printf("\n");
     }
 }
-multMat()
+multMat()// FUNÇAO MULTIPLICAÇAO DE MATRIZES
 {
     int numLinhaMat1, numColMat1, numLinhaMat2, numColMat2, numLinha, numColuna, k, n, resultado, matriz1[50][50], matriz2[50][50], matriz3[50][50];
 
-    for (numLinha=0; numLinha<numLinhaMat1; numLinha++)
+    for (numLinha=0; numLinha<numLinhaMat1; numLinha++)//LIMPAR O ARMAZENAMENTO DA MATRIZ RESULTADO CASO TENHA SIDO USADA ANTERIORMENTE DEVIDO AO MENU
     {
         for (numColuna=0; numColuna<numColMat2; numColuna++)
         {
@@ -399,11 +399,11 @@ multMat()
         printf("\nErro! Impossivel multiplicar as matrizes informadas.\n");
     }
 }
-somaMat()
+somaMat()//FUNÇAO SOMA DE MATRIZES
 {
     int numLinhaMat1, numColMat1, numLinhaMat2, numColMat2, numLinha, numColuna, k, n, resultado, matriz1[50][50], matriz2[50][50], matriz3[50][50];
 
-    for (numLinha=0; numLinha<numLinhaMat1; numLinha++)
+    for (numLinha=0; numLinha<numLinhaMat1; numLinha++)//LIMPAR O ARMAZENAMENTO DA MATRIZ RESULTADO CASO TENHA SIDO USADA ANTERIORMENTE DEVIDO AO MENU
     {
         for (numColuna=0; numColuna<numColMat2; numColuna++)
         {
@@ -465,11 +465,11 @@ somaMat()
         printf("\nErro! Impossivel somar as matrizes informadas.\n");
     }
 }
-multEsc()
+multEsc()//FUNÇAO MULTIPLICAÇAO POR ESCALAR
 {
     int numLinhaMat1, numColMat1, numLinhaMat2, numColMat2, numLinha, numColuna, k, n, resultado, matriz1[50][50], matriz2[50][50], matriz3[50][50];
 
-    for (numLinha=0; numLinha<numLinhaMat1; numLinha++)
+    for (numLinha=0; numLinha<numLinhaMat1; numLinha++)//LIMPAR O ARMAZENAMENTO DA MATRIZ RESULTADO CASO TENHA SIDO USADA ANTERIORMENTE DEVIDO AO MENU
     {
         for (numColuna=0; numColuna<numColMat2; numColuna++)
         {
@@ -511,11 +511,11 @@ multEsc()
     }
     printf("\n");
 }
-matTranspt()
+matTranspt()//FUNÇAO MATRIZ TRANSPOSTA
 {
     int numLinhaMat1, numColMat1, numLinhaMat2, numColMat2, numLinha, numColuna, k, n, resultado, matriz1[50][50], matriz2[50][50], matriz3[50][50];
 
-    for (numLinha=0; numLinha<numLinhaMat1; numLinha++)
+    for (numLinha=0; numLinha<numLinhaMat1; numLinha++)//LIMPAR O ARMAZENAMENTO DA MATRIZ RESULTADO CASO TENHA SIDO USADA ANTERIORMENTE DEVIDO AO MENU
     {
         for (numColuna=0; numColuna<numColMat2; numColuna++)
         {
@@ -565,11 +565,11 @@ matTranspt()
     }
     printf("\n");
 }
-subtraMat()
+subtraMat()//FUNÇAO SUBTRAÇAO DE MATRIZES
 {
     int numLinhaMat1, numColMat1, numLinhaMat2, numColMat2, numLinha, numColuna, k, n, resultado, matriz1[50][50], matriz2[50][50], matriz3[50][50];
 
-    for (numLinha=0; numLinha<numLinhaMat1; numLinha++)
+    for (numLinha=0; numLinha<numLinhaMat1; numLinha++)//LIMPAR O ARMAZENAMENTO DA MATRIZ RESULTADO CASO TENHA SIDO USADA ANTERIORMENTE DEVIDO AO MENU
     {
         for (numColuna=0; numColuna<numColMat2; numColuna++)
         {
@@ -630,17 +630,9 @@ subtraMat()
         printf("\nErro! Impossivel somar as matrizes informadas.\n");
     }
 }
-determiMat()
+determiMat()//FUNÇAO DETERMINANTE DE MATRIZES
 {
     int numLinhaMat1, numColMat1, numLinhaMat2, numColMat2, numLinha, numColuna, k, n, resultado, matriz1[50][50], matriz2[50][50], matriz3[50][50];
-
-    for (numLinha=0; numLinha<numLinhaMat1; numLinha++)
-    {
-        for (numColuna=0; numColuna<numColMat2; numColuna++)
-        {
-            matriz3[numLinha][numColuna] = 0;
-        }
-    }
     printf("\n==========DETERMINANTE DE MATRIZES==========\n");
     printf("\nMatriz 1\n==========\n");
     printf("\nDigite a ordem da matriz...: ");
@@ -666,11 +658,11 @@ determiMat()
     printf("\nDeterminante da matriz \n=====================\n");
     printf("\n     det = %d\n",resultado);
 }
-matOpos()
+matOpos()//FUNÇAO MATRIZ OPOSTA
 {
     int numLinhaMat1, numColMat1, numLinhaMat2, numColMat2, numLinha, numColuna, k, n, resultado, matriz1[50][50], matriz2[50][50], matriz3[50][50];
 
-    for (numLinha=0; numLinha<numLinhaMat1; numLinha++)
+    for (numLinha=0; numLinha<numLinhaMat1; numLinha++)//LIMPAR O ARMAZENAMENTO DA MATRIZ RESULTADO CASO TENHA SIDO USADA ANTERIORMENTE DEVIDO AO MENU
     {
         for (numColuna=0; numColuna<numColMat2; numColuna++)
         {
