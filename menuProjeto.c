@@ -33,6 +33,7 @@ inicio:
         case 'D'://ESCALONAMENTO DE MATRIZES
             system("cls");
             metodoDeGauss ();
+
             break;
         case 'E'://MULTIPLAÇAO POR ESCALAR
             system("cls");
@@ -73,6 +74,7 @@ inicio:
         }
     }
     while (1);//DEIXAR MENU CONTINUO
+
 }
 
 int det(int matriz1[50][50], int n)//FUNÇAO DETERMINATE DE MATRIZES UTILIZANDO RECURSSAO UTILIZADO EM determiMat()
@@ -114,6 +116,9 @@ int det(int matriz1[50][50], int n)//FUNÇAO DETERMINATE DE MATRIZES UTILIZANDO R
         }
     }
     return determinante;
+
+    system("pause");
+    system("cls");
 }
 
 int metodoDeGauss ()//FUNÇAO ESCALONAMENTO DE MATRIZES
@@ -177,6 +182,9 @@ int metodoDeGauss ()//FUNÇAO ESCALONAMENTO DE MATRIZES
         printf("\nx%d = %0.0f\t", aux,x[aux]); //IMPRESSAO DAS SOLUÇOES
     }
     return(0);
+
+    system("pause");
+    system("cls");
 }
 
 int aparencia ()//FUNÇAO APARENCIA DE CORES DO MENU
@@ -202,6 +210,9 @@ int aparencia ()//FUNÇAO APARENCIA DE CORES DO MENU
     else if (x != 2)
         printf("\nNúmero Inválido\n");
     return 0;
+
+    system("pause");
+    system("cls");
 }
 float determinanteInversa(float a[][25], float k);
 void cofator(float [][25], float);
@@ -221,10 +232,14 @@ int matrizInversa2()//FUNÇAO MATRIZ INVERSA
         }
     }
     d = determinanteInversa(a, k);
-    if (d == 0)
+    if (d == 0){
         printf("\nMatriz inversa dos valores recebidos nao eh possivel\n");
-    else
+    }else{
         cofator(a, k);
+    }
+
+    system("pause");
+    system("cls");
 }
 
 float determinanteInversa(float a[25][25], float k)//FUÇAO DETERMINANTE USADA PARA INVERSA
@@ -265,6 +280,9 @@ float determinanteInversa(float a[25][25], float k)//FUÇAO DETERMINANTE USADA PA
         }
     }
     return (det);
+
+    system("pause");
+    system("cls");
 }
 
 void cofator(float num[25][25], float f)//FUNÇAO COFATOR USADA PARA CALCULO DE MATRIZ INVERSA
@@ -298,6 +316,9 @@ void cofator(float num[25][25], float f)//FUNÇAO COFATOR USADA PARA CALCULO DE M
         }
     }
     transposta(num, fac, f);
+
+    system("pause");
+    system("cls");
 }
 
 void transposta(float num[25][25], float fac[25][25], float r)//FUNÇAO TRANSPOSTA USADA PARA CALCULO DE MATRIZ INVERSA
@@ -330,6 +351,8 @@ void transposta(float num[25][25], float fac[25][25], float r)//FUNÇAO TRANSPOST
         }
         printf("\n");
     }
+    system("pause");
+    system("cls");
 }
 multMat()// FUNÇAO MULTIPLICAÇAO DE MATRIZES
 {
@@ -396,8 +419,10 @@ multMat()// FUNÇAO MULTIPLICAÇAO DE MATRIZES
     }
     else
     {
-        printf("\nErro! Impossivel multiplicar as matrizes informadas.\n");
+        printf("\nErro! Impossivel multiplicar as matrizes informadas.\n\n");
     }
+    system("pause");
+    system("cls");
 }
 somaMat()//FUNÇAO SOMA DE MATRIZES
 {
@@ -462,8 +487,10 @@ somaMat()//FUNÇAO SOMA DE MATRIZES
     }
     else
     {
-        printf("\nErro! Impossivel somar as matrizes informadas.\n");
+        printf("\n\nErro! Impossível somar as matrizes informadas.\n\n");
     }
+    system("pause");
+    system("cls");
 }
 multEsc()//FUNÇAO MULTIPLICAÇAO POR ESCALAR
 {
@@ -510,6 +537,9 @@ multEsc()//FUNÇAO MULTIPLICAÇAO POR ESCALAR
         printf("\n");
     }
     printf("\n");
+
+    system("pause");
+    system("cls");
 }
 matTranspt()//FUNÇAO MATRIZ TRANSPOSTA
 {
@@ -564,6 +594,9 @@ matTranspt()//FUNÇAO MATRIZ TRANSPOSTA
         printf("\n");
     }
     printf("\n");
+
+    system("pause");
+    system("cls");
 }
 subtraMat()//FUNÇAO SUBTRAÇAO DE MATRIZES
 {
@@ -629,6 +662,9 @@ subtraMat()//FUNÇAO SUBTRAÇAO DE MATRIZES
     {
         printf("\nErro! Impossivel somar as matrizes informadas.\n");
     }
+
+    system("pause");
+    system("cls");
 }
 determiMat()//FUNÇAO DETERMINANTE DE MATRIZES
 {
@@ -657,6 +693,9 @@ determiMat()//FUNÇAO DETERMINANTE DE MATRIZES
     resultado = det(matriz1,n);
     printf("\nDeterminante da matriz \n=====================\n");
     printf("\n     det = %d\n",resultado);
+
+    system("pause");
+    system("cls");
 }
 matOpos()//FUNÇAO MATRIZ OPOSTA
 {
@@ -711,4 +750,7 @@ matOpos()//FUNÇAO MATRIZ OPOSTA
         printf("\n");
     }
     printf("\n");
+
+    system("pause");
+    system("cls");
 }
