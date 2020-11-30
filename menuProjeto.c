@@ -12,7 +12,21 @@ inicio:
     setlocale( LC_ALL, "" );
     do
     {
-        printf("A - MULTIPLICAÇÃO DE MATRIZES \nB - SOMA DE MATRIZES \nC - MATRIZ INVERSA \nD - ESCALONAMENTO DE MATRIZ\nE - MULTIPLICAÇÃO POR ESCALAR \nF - MATRIZ TRANSPOSTA \nG - SUBTRAÇÃO DE MATRIZES \nH - DETERMINANTE DE MATRIZES \nI - MATRIZ OPOSTA \nJ - SAIR \nK - OPÇÕES ");
+        printf("\n\n O====CALCULADORA DE MATRIZES====O\n");
+        printf("\n\n O~~~--------~~~~O~~~~--------~~~O");
+        printf("\n ? A - MULTIPLICACAO DE MATRIZES ?");
+        printf("\n ! B - SOMA DE MATRIZES          !");
+        printf("\n | C - MATRIZ INVERSA            |");
+        printf("\n ¡ D - ESCALONAMENTO DE MATRIZES ¡");
+        printf("\n ¿ E - MULTIPLICACAO POR ESCALAR ¿");
+        printf("\n O F - MATRIZ TRANSPOSTA         O");
+        printf("\n ? G - SUBTRAÇAO DE MATRIZES     ?");
+        printf("\n ! H - DETERMINANTE DE MATRIZES  !");
+        printf("\n | I - MATRIZ OPOSTA             |");
+        printf("\n ¡ J - SAIR                      ¡");
+        printf("\n ¿ K - OPÇOES                    ¿");
+        printf("\n O~~~--------~~~~O~~~~--------~~~O ");
+        printf("\n\n Escolha uma opcao: ");
         opcao = getch();
         switch (toupper(opcao))
         {
@@ -116,9 +130,7 @@ int det(int matriz1[50][50], int n)//FUNÇAO DETERMINATE DE MATRIZES UTILIZANDO R
         }
     }
     return determinante;
-
     system("pause");
-    system("cls");
 }
 
 int metodoDeGauss ()//FUNÇAO ESCALONAMENTO DE MATRIZES
@@ -182,9 +194,7 @@ int metodoDeGauss ()//FUNÇAO ESCALONAMENTO DE MATRIZES
         printf("\nx%d = %0.0f\t", aux,x[aux]); //IMPRESSAO DAS SOLUÇOES
     }
     return(0);
-
     system("pause");
-    system("cls");
 }
 
 int aparencia ()//FUNÇAO APARENCIA DE CORES DO MENU
@@ -210,9 +220,7 @@ int aparencia ()//FUNÇAO APARENCIA DE CORES DO MENU
     else if (x != 2)
         printf("\nNúmero Inválido\n");
     return 0;
-
     system("pause");
-    system("cls");
 }
 float determinanteInversa(float a[][25], float k);
 void cofator(float [][25], float);
@@ -232,14 +240,14 @@ int matrizInversa2()//FUNÇAO MATRIZ INVERSA
         }
     }
     d = determinanteInversa(a, k);
-    if (d == 0){
+    if (d == 0)
+    {
         printf("\nMatriz inversa dos valores recebidos nao eh possivel\n");
-    }else{
+    }
+    else
+    {
         cofator(a, k);
     }
-
-    system("pause");
-    system("cls");
 }
 
 float determinanteInversa(float a[25][25], float k)//FUÇAO DETERMINANTE USADA PARA INVERSA
@@ -282,7 +290,6 @@ float determinanteInversa(float a[25][25], float k)//FUÇAO DETERMINANTE USADA PA
     return (det);
 
     system("pause");
-    system("cls");
 }
 
 void cofator(float num[25][25], float f)//FUNÇAO COFATOR USADA PARA CALCULO DE MATRIZ INVERSA
@@ -318,7 +325,6 @@ void cofator(float num[25][25], float f)//FUNÇAO COFATOR USADA PARA CALCULO DE M
     transposta(num, fac, f);
 
     system("pause");
-    system("cls");
 }
 
 void transposta(float num[25][25], float fac[25][25], float r)//FUNÇAO TRANSPOSTA USADA PARA CALCULO DE MATRIZ INVERSA
@@ -352,7 +358,6 @@ void transposta(float num[25][25], float fac[25][25], float r)//FUNÇAO TRANSPOST
         printf("\n");
     }
     system("pause");
-    system("cls");
 }
 multMat()// FUNÇAO MULTIPLICAÇAO DE MATRIZES
 {
@@ -422,7 +427,6 @@ multMat()// FUNÇAO MULTIPLICAÇAO DE MATRIZES
         printf("\nErro! Impossivel multiplicar as matrizes informadas.\n\n");
     }
     system("pause");
-    system("cls");
 }
 somaMat()//FUNÇAO SOMA DE MATRIZES
 {
@@ -490,7 +494,6 @@ somaMat()//FUNÇAO SOMA DE MATRIZES
         printf("\n\nErro! Impossível somar as matrizes informadas.\n\n");
     }
     system("pause");
-    system("cls");
 }
 multEsc()//FUNÇAO MULTIPLICAÇAO POR ESCALAR
 {
@@ -537,9 +540,7 @@ multEsc()//FUNÇAO MULTIPLICAÇAO POR ESCALAR
         printf("\n");
     }
     printf("\n");
-
     system("pause");
-    system("cls");
 }
 matTranspt()//FUNÇAO MATRIZ TRANSPOSTA
 {
@@ -594,9 +595,7 @@ matTranspt()//FUNÇAO MATRIZ TRANSPOSTA
         printf("\n");
     }
     printf("\n");
-
     system("pause");
-    system("cls");
 }
 subtraMat()//FUNÇAO SUBTRAÇAO DE MATRIZES
 {
@@ -662,9 +661,7 @@ subtraMat()//FUNÇAO SUBTRAÇAO DE MATRIZES
     {
         printf("\nErro! Impossivel somar as matrizes informadas.\n");
     }
-
     system("pause");
-    system("cls");
 }
 determiMat()//FUNÇAO DETERMINANTE DE MATRIZES
 {
@@ -693,9 +690,7 @@ determiMat()//FUNÇAO DETERMINANTE DE MATRIZES
     resultado = det(matriz1,n);
     printf("\nDeterminante da matriz \n=====================\n");
     printf("\n     det = %d\n",resultado);
-
     system("pause");
-    system("cls");
 }
 matOpos()//FUNÇAO MATRIZ OPOSTA
 {
@@ -750,7 +745,5 @@ matOpos()//FUNÇAO MATRIZ OPOSTA
         printf("\n");
     }
     printf("\n");
-
     system("pause");
-    system("cls");
 }
