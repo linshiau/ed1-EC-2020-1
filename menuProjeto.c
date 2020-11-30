@@ -23,8 +23,9 @@ inicio:
         printf("\n ? G - SUBTRAÇAO DE MATRIZES     ?");
         printf("\n ! H - DETERMINANTE DE MATRIZES  !");
         printf("\n | I - MATRIZ OPOSTA             |");
-        printf("\n ¡ J - SAIR                      ¡");
-        printf("\n ¿ K - OPÇOES                    ¿");
+        printf("\n | J - ELEVAR MATRIZ À POTENCIA  |");
+        printf("\n ¡ K - OPÇOES                    ¡");
+        printf("\n ¿ L - SAIR                      ¿");
         printf("\n O~~~--------~~~~O~~~~--------~~~O ");
         printf("\n\n Escolha uma opcao: ");
         opcao = getch();
@@ -69,9 +70,9 @@ inicio:
             system("cls");
             matOpos();
             break;
-        case 'J'://FUNÇAO SAIR
+        case 'J'://FUNÇAO ELEVAR MATRIZ À POTENCIA
             system("cls");
-            exit(0);
+            elevarAPotenciaDe();
             break;
         case 'K'://OPÇOES DE COR DE PROGRAMA
             system("cls");
@@ -79,6 +80,10 @@ inicio:
             printf("===================== OPCÕES =====================\n\n");
             aparencia ();
             system("cls");
+            break;
+        case 'L'://FUNÇAO SAIR
+            system("cls");
+            exit(0);
             break;
         default://OPÇAO INVALIDA
             printf("Você deve escolher uma opcão válida\n");
@@ -746,4 +751,68 @@ matOpos()//FUNÇAO MATRIZ OPOSTA
     }
     printf("\n");
     system("pause");
+}
+elevarAPotenciaDe()
+{
+    int numLinhaMat1, p, numLinha, numColuna, i, k, n;
+
+    printf("\n==========ELEVAR MATRIZ À POTENCIA==========\n");
+    printf("\nMatriz 1\n==========\n");
+    printf("\nDigite o numero de linhas/colunas da matriz quadrada...: ");
+    scanf("%d", &numLinhaMat1);
+    do{
+        printf("Digite um expoente maior ou igual a 1: ");
+        scanf("%d", &p);
+    }while(p<=0);
+    int matriz1[numLinhaMat1][numLinhaMat1], matriz2[numLinhaMat1][numLinhaMat1], matriz3[numLinhaMat1][numLinhaMat1];
+
+
+    printf("\nValores da Matriz 1\n=====================\n\n");
+    for (numLinha=0; numLinha<numLinhaMat1; numLinha++)
+    {
+        for(numColuna=0; numColuna<numLinhaMat1; numColuna++)
+        {
+            printf("Digite um valor para [%d][%d].: ", (numLinha+1), (numColuna+1));
+            scanf("%d", &matriz1[numLinha][numColuna]);
+            matriz2[numLinha][numColuna] = matriz1[numLinha][numColuna];
+        }
+    }
+
+    int sum = 0;
+    for ( i = 0; i < p - 1; i++)
+    {
+        for ( numLinha = 0 ; numLinha < numLinhaMat1 ; numLinha++ )
+        {
+            for (numColuna = 0 ; numColuna < numLinhaMat1 ; numColuna++ )
+            {
+                for ( k = 0 ; k < numLinhaMat1 ; k++ )
+                {
+                    sum += matriz2[numLinha][k]*matriz1[k][numColuna];
+                }
+                matriz3[numLinha][numColuna] = sum;
+                sum = 0;
+            }
+        }
+
+        for ( numLinha = 0 ; numLinha < numLinhaMat1 ; numLinha++ )
+        {
+            for ( numColuna = 0 ; numColuna < numLinhaMat1 ; numColuna++ )
+            {
+                matriz2[numLinha][numColuna] = matriz3[numLinha][numColuna];
+            }
+        }
+    }
+
+    printf("\nMatriz elvada à '%d':\n======================\n\n", p);
+
+    for ( n = 0 ; n < numLinhaMat1 ; n++ )
+    {
+        for ( numColuna = 0 ; numColuna < numLinhaMat1 ; numColuna++ )
+        {
+            printf("%d   ", matriz2[n][numColuna]);
+        }
+        printf("\n");
+    }
+    getchar();
+
 }
