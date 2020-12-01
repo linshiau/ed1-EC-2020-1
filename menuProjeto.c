@@ -915,19 +915,17 @@ void postoMatriz()
 {
     int posto;
     setlocale( LC_ALL, "" );
-    printf("\n Digite o numero de linhas:");
+    printf("\n Digite o número de linhas:");
     scanf("%d", &numLinhas);
-    printf("\n Digite o numero de colunas:");
+    printf("\n Digite o número de colunas:");
     scanf("%d", &numColunas);
     entrada(numLinhas, numColunas);
-    printf("\n O numero de linhas é : %d", numLinhas);
-    printf("\n O numero de colunas e : %d \n", numColunas);
 
-    printf("\n Matriz entrada pelo usuario:\n");
     saida(numLinhas,numColunas);
-    printf("\n Numero de linhas : %d", numLinhas);
-    printf("\n Numero de colunas : %d\n", numColunas);
+    printf("\n Número de linhas : %d", numLinhas);
+    printf("\n Número de colunas : %d\n", numColunas);
+    printf("\n Matriz entrada pelo usuário:\n");
 
     posto = Posto_Mat(numLinhas, numColunas);
-    printf("\n O posto da matriz acima e : %d", posto);
+    printf("\n O posto da matriz acima é : %d\n", posto);
 }
