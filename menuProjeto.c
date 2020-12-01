@@ -88,6 +88,10 @@ inicio:
             break;
         case 'M'://FUNÇAO SAIR
             system("cls");
+            printf("Obrigado por usar a nossa calculadora de matrizes.\n");
+            printf("Criadores do programa: \n");
+            printf("Lin Shiau Lon Rocha \n");
+            printf("Rodrigo de Oliveira Ribeiro \n");
             exit(0);
             break;
         default://OPÇAO INVALIDA
@@ -848,16 +852,17 @@ int Posto_Mat(int linha1, int col1)
     {
         saida(numLinhas,numColunas);
         if( matriz1[numLin][numLin] )
-        for(numCol = 0; numCol < linha1; numCol++)
-            if(numCol != numLin)
-            {/* faz com que todos os elementos acima e abaixo
-                da diagonal principal atual sejam zero */
-                float razao = matriz1[numCol][numLin]/ matriz1[numLin][numLin];
-                for( i = 0; i < col1; i++)
-                    matriz1[numCol][i] -= razao * matriz1[numLin][i];
-            }
-            else
-                printf("\n");
+            for(numCol = 0; numCol < linha1; numCol++)
+                if(numCol != numLin)
+                {
+                    /* faz com que todos os elementos acima e abaixo
+                       da diagonal principal atual sejam zero */
+                    float razao = matriz1[numCol][numLin]/ matriz1[numLin][numLin];
+                    for( i = 0; i < col1; i++)
+                        matriz1[numCol][i] -= razao * matriz1[numLin][i];
+                }
+                else
+                    printf("\n");
         else
         {
             for(numCol =  numLin+1 ; numCol < linha1;  numCol++)
