@@ -14,18 +14,19 @@ inicio:
     {
         printf("\n\n O====CALCULADORA DE MATRIZES====O\n");
         printf("\n\n O~~~--------~~~~O~~~~--------~~~O");
-        printf("\n ? A - MULTIPLICACAO DE MATRIZES ?");
+        printf("\n ? A - MULTIPLICAÇÃO DE MATRIZES ?");
         printf("\n ! B - SOMA DE MATRIZES          !");
         printf("\n | C - MATRIZ INVERSA            |");
-        printf("\n ¡ D - ESCALONAMENTO DE MATRIZES ¡");
-        printf("\n ¿ E - MULTIPLICACAO POR ESCALAR ¿");
-        printf("\n O F - MATRIZ TRANSPOSTA         O");
-        printf("\n ? G - SUBTRAÇAO DE MATRIZES     ?");
-        printf("\n ! H - DETERMINANTE DE MATRIZES  !");
-        printf("\n | I - MATRIZ OPOSTA             |");
-        printf("\n | J - ELEVAR MATRIZ À POTENCIA  |");
-        printf("\n ¡ K - OPÇOES                    ¡");
-        printf("\n ¿ L - SAIR                      ¿");
+        printf("\n | D - ESCALONAMENTO DE MATRIZES |");
+        printf("\n ¡ E - MULTIPLICAÇÃO POR ESCALAR ¡");
+        printf("\n ¿ F - MATRIZ TRANSPOSTA         ¿");
+        printf("\n O G - SUBTRAÇÃO DE MATRIZES     O");
+        printf("\n ? H - DETERMINANTE DE MATRIZES  ?");
+        printf("\n ! I - MATRIZ OPOSTA             !");
+        printf("\n | J - ELEVAR MATRIZ À POTÊNCIA  |");
+        printf("\n | K - POSTO DE MATRIZ           |");
+        printf("\n ¡ L - OPÇÕES                    ¡");
+        printf("\n ¿ M - SAIR                      ¿");
         printf("\n O~~~--------~~~~O~~~~--------~~~O ");
         printf("\n\n Escolha uma opcao: ");
         opcao = getch();
@@ -74,14 +75,18 @@ inicio:
             system("cls");
             elevarAPotenciaDe();
             break;
-        case 'K'://OPÇOES DE COR DE PROGRAMA
+        case 'K'://POSTO DE MATRIZ
+            system("cls");
+            postoMatriz();
+            break;
+        case 'L'://OPÇOES DE COR DE PROGRAMA
             system("cls");
             system("cls");
             printf("===================== OPCÕES =====================\n\n");
             aparencia ();
             system("cls");
             break;
-        case 'L'://FUNÇAO SAIR
+        case 'M'://FUNÇAO SAIR
             system("cls");
             exit(0);
             break;
@@ -760,10 +765,12 @@ elevarAPotenciaDe()
     printf("\nMatriz 1\n==========\n");
     printf("\nDigite o numero de linhas/colunas da matriz quadrada...: ");
     scanf("%d", &numLinhaMat1);
-    do{
+    do
+    {
         printf("Digite um expoente maior ou igual a 1: ");
         scanf("%d", &p);
-    }while(p<=0);
+    }
+    while(p<=0);
     int matriz1[numLinhaMat1][numLinhaMat1], matriz2[numLinhaMat1][numLinhaMat1], matriz3[numLinhaMat1][numLinhaMat1];
 
 
@@ -815,4 +822,107 @@ elevarAPotenciaDe()
     }
     getchar();
 
+}
+int numLinhas,numColunas;
+int i, j;
+int matriz1[10][10];
+void saida( int, int);
+void entrada( int, int);
+int Posto_Mat(int , int);
+void troca(int, int, int);
+/* ESSA FUNÇAO TROCA DUAS LINHAS DE UMA MATRIZ */
+void troca( int linha1,int linha2, int col)
+{
+    for( i = 0; i < col; i++)
+    {
+        int temp = matriz1[linha1][i];
+        matriz1[linha1][i] = matriz1[linha2][i];
+        matriz1[linha2][i] = temp;
+    }
+}
+/* ESSA FUNÇAO ACHA O POSTO DA MTRIZ */
+int Posto_Mat(int linha1, int col1)
+{
+    int numLin, numCol;
+    for(numLin = 0; numLin< col1; numLin++)
+    {
+        saida(numLinhas,numColunas);
+        if( matriz1[numLin][numLin] )
+        for(numCol = 0; numCol < linha1; numCol++)
+            if(numCol != numLin)
+            {/* faz com que todos os elementos acima e abaixo
+                da diagonal principal atual sejam zero */
+                float razao = matriz1[numCol][numLin]/ matriz1[numLin][numLin];
+                for( i = 0; i < col1; i++)
+                    matriz1[numCol][i] -= razao * matriz1[numLin][i];
+            }
+            else
+                printf("\n");
+        else
+        {
+            for(numCol =  numLin+1 ; numCol < linha1;  numCol++)
+                if (matriz1[numCol][numLin])
+                {
+                    troca(numLin,numCol,col1);
+                    break ;
+                }
+
+            if(numCol == linha1)
+            {
+                -- col1;
+
+                for(numCol = 0; numCol < linha1; numCol ++)
+                    matriz1[numCol][numLin] = matriz1[numCol][col1];
+            }
+            --numLin;
+        }
+    }
+    return col1;
+}
+/* FUNÇAO DE SAIDA */
+void saida( int lin, int col)
+{
+    for(i = 0; i < lin; i++)
+    {
+        for(j = 0; j < col; j++)
+        {
+            printf("  %d", matriz1[i][j]);
+        }
+        printf("\n");
+    }
+}
+/* FUNÇAO DE ENTRADA */
+void entrada( int lin, int col)
+{
+    int valor;
+    for(i = 0 ; i< lin; i++)
+    {
+        for(j = 0 ;  j<col; j++)
+        {
+            printf("digite um valor para: %d: %d: ", i+1, j+1);
+            scanf("%d",  &valor);
+            matriz1[i][j] = valor;
+        }
+    }
+}
+/* FUNÇAO PRINCIPAL PARA ACHAR POSTO MATRIZ */
+void postoMatriz()
+{
+    int posto;
+    setlocale( LC_ALL, "" );
+    printf("\n Digite o numero de linhas:");
+    scanf("%d", &numLinhas);
+    printf("\n Digite o numero de colunas:");
+    scanf("%d", &numColunas);
+    entrada(numLinhas, numColunas);
+    printf("\n O numero de linhas é : %d", numLinhas);
+    printf("\n O numero de colunas e : %d \n", numColunas);
+
+    printf("\n Matriz entrada pelo usuario:\n");
+    saida(numLinhas,numColunas);
+    printf("\n Numero de linhas : %d", numLinhas);
+    printf("\n Numero de colunas : %d\n", numColunas);
+
+    posto = Posto_Mat(numLinhas, numColunas);
+    printf("\n O posto da matriz acima e : %d", posto);
 }
