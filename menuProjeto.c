@@ -96,9 +96,9 @@ inicio:
             exit(0);
             break;
         default://OPÇAO INVALIDA
-            printf("Você deve escolher uma opcão válida\n");
-            printf("Precione qualquer tecla para voltar ao menu\n");
-            system("pause");
+            printf("Você deve escolher uma opcão válida!\n");
+            printf("Pressione a tecla ENTER para voltar ao menu\n");
+            getchar();
             goto inicio;
         }
     }
@@ -145,7 +145,8 @@ int det(int matriz1[50][50], int n)//FUNÇAO DETERMINATE DE MATRIZES UTILIZANDO R
         }
     }
     return determinante;
-    system("pause");
+    printf("Pressione a tecla ENTER para voltar ao menu\n");
+    getchar();
 }
 
 int metodoDeGauss ()//FUNÇAO ESCALONAMENTO DE MATRIZES
@@ -209,7 +210,8 @@ int metodoDeGauss ()//FUNÇAO ESCALONAMENTO DE MATRIZES
         printf("\nx%d = %0.0f\t", aux,x[aux]); //IMPRESSAO DAS SOLUÇOES
     }
     return(0);
-    system("pause");
+    printf("Pressione a tecla ENTER para voltar ao menu\n");
+    getchar();
 }
 int aparenciaPadrao (){
     system ("color 0F");
@@ -217,23 +219,34 @@ int aparenciaPadrao (){
 int aparencia ()//FUNÇAO APARENCIA DE CORES DO MENU
 {
     int cor;
+
+    selecioneCor:
     do
     {
-        printf ("E - Aparência Escura\n");
+        system("cls");
         printf ("C - Aparência Clara\n");
+        printf ("E - Aparência Escura (Padrão)\n");
         printf("\nDigite o aparência desejada: \n");
     cor = getch();
     switch (toupper(cor))
     {
-    case 'E' :
+    case 'C' :
         system ("color 70");
         break;
-    case 'C':
+    case 'E':
         system ("color 0F");
         break;
+    default:
+            printf("Você deve escolher uma opcão válida\n");
+            printf("Precione qualquer tecla para voltar ao menu\n");
+            getchar();
+            goto selecioneCor;
         }
     }
     while(0);
+
+    printf("\nPressione a tecla ENTER para voltar ao menu\n");
+    getchar();
 }
 float determinanteInversa(float a[][25], float k);
 void cofator(float [][25], float);
@@ -261,6 +274,8 @@ int matrizInversa2()//FUNÇAO MATRIZ INVERSA
     {
         cofator(a, k);
     }
+    printf("\nPressione a tecla ENTER para voltar ao menu\n");
+    getchar();
 }
 
 float determinanteInversa(float a[25][25], float k)//FUÇAO DETERMINANTE USADA PARA INVERSA
@@ -302,7 +317,8 @@ float determinanteInversa(float a[25][25], float k)//FUÇAO DETERMINANTE USADA PA
     }
     return (det);
 
-    system("pause");
+    printf("\nPressione a tecla ENTER para voltar ao menu\n");
+    getchar();
 }
 
 void cofator(float num[25][25], float f)//FUNÇAO COFATOR USADA PARA CALCULO DE MATRIZ INVERSA
@@ -337,7 +353,8 @@ void cofator(float num[25][25], float f)//FUNÇAO COFATOR USADA PARA CALCULO DE M
     }
     transposta(num, fac, f);
 
-    system("pause");
+    printf("\nPressione a tecla ENTER para voltar ao menu\n");
+    getchar();
 }
 
 void transposta(float num[25][25], float fac[25][25], float r)//FUNÇAO TRANSPOSTA USADA PARA CALCULO DE MATRIZ INVERSA
@@ -370,7 +387,8 @@ void transposta(float num[25][25], float fac[25][25], float r)//FUNÇAO TRANSPOST
         }
         printf("\n");
     }
-    system("pause");
+    printf("\nPressione a tecla ENTER para voltar ao menu\n");
+    getchar();
 }
 multMat()// FUNÇAO MULTIPLICAÇAO DE MATRIZES
 {
@@ -439,7 +457,8 @@ multMat()// FUNÇAO MULTIPLICAÇAO DE MATRIZES
     {
         printf("\nErro! Impossivel multiplicar as matrizes informadas.\n\n");
     }
-    system("pause");
+    printf("\nPressione a tecla ENTER para voltar ao menu\n");
+    getchar();
 }
 somaMat()//FUNÇAO SOMA DE MATRIZES
 {
@@ -506,7 +525,8 @@ somaMat()//FUNÇAO SOMA DE MATRIZES
     {
         printf("\n\nErro! Impossível somar as matrizes informadas.\n\n");
     }
-    system("pause");
+    printf("\nPressione a tecla ENTER para voltar ao menu\n");
+    getchar();
 }
 multEsc()//FUNÇAO MULTIPLICAÇAO POR ESCALAR
 {
@@ -553,7 +573,9 @@ multEsc()//FUNÇAO MULTIPLICAÇAO POR ESCALAR
         printf("\n");
     }
     printf("\n");
-    system("pause");
+
+    printf("\nPressione a tecla ENTER para voltar ao menu\n");
+    getchar();
 }
 matTranspt()//FUNÇAO MATRIZ TRANSPOSTA
 {
@@ -608,7 +630,8 @@ matTranspt()//FUNÇAO MATRIZ TRANSPOSTA
         printf("\n");
     }
     printf("\n");
-    system("pause");
+    printf("\nPressione a tecla ENTER para voltar ao menu\n");
+    getchar();
 }
 subtraMat()//FUNÇAO SUBTRAÇAO DE MATRIZES
 {
@@ -674,7 +697,8 @@ subtraMat()//FUNÇAO SUBTRAÇAO DE MATRIZES
     {
         printf("\nErro! Impossivel somar as matrizes informadas.\n");
     }
-    system("pause");
+    printf("\nPressione a tecla ENTER para voltar ao menu\n");
+    getchar();
 }
 determiMat()//FUNÇAO DETERMINANTE DE MATRIZES
 {
@@ -704,7 +728,9 @@ determiMat()//FUNÇAO DETERMINANTE DE MATRIZES
     resultado = det(matriz1,n);
     printf("\nDeterminante da matriz \n=====================\n");
     printf("\n     det = %d\n",resultado);
-    system("pause");
+
+    printf("\nPressione a tecla ENTER para voltar ao menu\n");
+    getchar();
 }
 matOpos()//FUNÇAO MATRIZ OPOSTA
 {
@@ -759,7 +785,8 @@ matOpos()//FUNÇAO MATRIZ OPOSTA
         printf("\n");
     }
     printf("\n");
-    system("pause");
+    printf("\nPressione a tecla ENTER para voltar ao menu\n");
+    getchar();
 }
 elevarAPotenciaDe()
 {
@@ -824,6 +851,7 @@ elevarAPotenciaDe()
         }
         printf("\n");
     }
+    printf("\nPressione a tecla ENTER para voltar ao menu\n");
     getchar();
 
 }
@@ -843,8 +871,10 @@ void troca( int linha1,int linha2, int col)
         matriz1[linha1][i] = matriz1[linha2][i];
         matriz1[linha2][i] = temp;
     }
+    printf("\n\nPressione a tecla ENTER para voltar ao menu\n");
+    getchar();
 }
-/* ESSA FUNÇAO ACHA O POSTO DA MTRIZ */
+/* ESSA FUNÇAO ACHAR O POSTO DA MATRIZ */
 int Posto_Mat(int linha1, int col1)
 {
     int numLin, numCol;
@@ -883,6 +913,9 @@ int Posto_Mat(int linha1, int col1)
         }
     }
     return col1;
+
+    printf("\nPressione a tecla ENTER para voltar ao menu\n");
+    getchar();
 }
 /* FUNÇAO DE SAIDA */
 void saida( int lin, int col)
@@ -904,17 +937,18 @@ void entrada( int lin, int col)
     {
         for(j = 0 ;  j<col; j++)
         {
-            printf("digite um valor para: %d: %d: ", i+1, j+1);
+            printf("\nDigite um valor para: %d: %d: ", i+1, j+1);
             scanf("%d",  &valor);
             matriz1[i][j] = valor;
         }
     }
+    printf("\nPressione a tecla ENTER para voltar ao menu\n");
+    getchar();
 }
 /* FUNÇAO PRINCIPAL PARA ACHAR POSTO MATRIZ */
 void postoMatriz()
 {
     int posto;
-    setlocale( LC_ALL, "" );
     printf("\n Digite o número de linhas:");
     scanf("%d", &numLinhas);
     printf("\n Digite o número de colunas:");
@@ -928,4 +962,7 @@ void postoMatriz()
 
     posto = Posto_Mat(numLinhas, numColunas);
     printf("\n O posto da matriz acima é : %d\n", posto);
+
+    printf("\nPressione a tecla ENTER para voltar ao menu\n");
+    getchar();
 }
