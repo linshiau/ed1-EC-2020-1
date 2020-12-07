@@ -6,6 +6,7 @@
 
 main()//MENU DO PROJETO
 {
+    aparenciaPadrao ();
     int opcao;
 inicio:
     system("cls");
@@ -28,7 +29,7 @@ inicio:
         printf("\n ¡ L - OPÇÕES                    ¡");
         printf("\n ¿ M - SAIR                      ¿");
         printf("\n O~~~--------~~~~O~~~~--------~~~O ");
-        printf("\n\n Escolha uma opcao: ");
+        printf("\n\n Escolha uma opção: ");
         opcao = getch();
         switch (toupper(opcao))
         {
@@ -210,31 +211,29 @@ int metodoDeGauss ()//FUNÇAO ESCALONAMENTO DE MATRIZES
     return(0);
     system("pause");
 }
-
+int aparenciaPadrao (){
+    system ("color 0F");
+}
 int aparencia ()//FUNÇAO APARENCIA DE CORES DO MENU
 {
-    int x;
+    int cor;
     do
     {
-        printf ("1 - Aparência Claro\n");
-        printf ("2 - Aparência Escura\n");
+        printf ("E - Aparência Escura\n");
+        printf ("C - Aparência Clara\n");
         printf("\nDigite o aparência desejada: \n");
-        scanf("%i", &x);
-    }
-    while (x < 0 || x > 2);
-    if (x == 1)
+    cor = getch();
+    switch (toupper(cor))
+    {
+    case 'E' :
         system ("color 70");
-    else if (x == 2)
+        break;
+    case 'C':
         system ("color 0F");
-
-    if (x == 10)
-        printf ("Obrigado\n");
-    else if (x != 1)
-        printf("\nNúmero Inválido\n");
-    else if (x != 2)
-        printf("\nNúmero Inválido\n");
-    return 0;
-    system("pause");
+        break;
+        }
+    }
+    while(0);
 }
 float determinanteInversa(float a[][25], float k);
 void cofator(float [][25], float);
@@ -680,6 +679,7 @@ subtraMat()//FUNÇAO SUBTRAÇAO DE MATRIZES
 determiMat()//FUNÇAO DETERMINANTE DE MATRIZES
 {
     int numLinhaMat1, numColMat1, numLinhaMat2, numColMat2, numLinha, numColuna, k, n, resultado, matriz1[50][50], matriz2[50][50], matriz3[50][50];
+
     printf("\n==========DETERMINANTE DE MATRIZES==========\n");
     printf("\nMatriz 1\n==========\n");
     printf("\nDigite a ordem da matriz...: ");
