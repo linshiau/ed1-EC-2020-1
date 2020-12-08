@@ -9,7 +9,7 @@ main()//MENU DO PROJETO
     aparenciaPadrao ();
     int opcao;
 inicio:
-    system("cls");
+
     setlocale( LC_ALL, "" );
     do
     {
@@ -50,7 +50,6 @@ inicio:
         case 'D'://ESCALONAMENTO DE MATRIZES
             system("cls");
             metodoDeGauss ();
-
             break;
         case 'E'://MULTIPLAÇAO POR ESCALAR
             system("cls");
@@ -81,24 +80,18 @@ inicio:
             postoMatriz();
             break;
         case 'L'://OPÇOES DE COR DE PROGRAMA
-            system("cls");
-            system("cls");
-            printf("===================== OPCÕES =====================\n\n");
-            aparencia ();
+            opcoes ();
             system("cls");
             break;
         case 'M'://FUNÇAO SAIR
             system("cls");
-            printf("Obrigado por usar a nossa calculadora de matrizes.\n");
-            printf("Criadores do programa: \n");
-            printf("Lin Shiau Lon Rocha \n");
-            printf("Rodrigo de Oliveira Ribeiro \n");
-            exit(0);
+            sair();
             break;
         default://OPÇAO INVALIDA
             printf("Você deve escolher uma opcão válida!\n");
             printf("Pressione a tecla ENTER para voltar ao menu\n");
             getchar();
+
             goto inicio;
         }
     }
@@ -106,7 +99,7 @@ inicio:
 
 }
 
-int det(int matriz1[50][50], int n)//FUNÇAO DETERMINATE DE MATRIZES UTILIZANDO RECURSSAO UTILIZADO EM determiMat()
+int det(int matriz1[50][50], int n)//FUNÇAO DETERMINATE DE MATRIZES UTILIZANDO RECURSSÃO UTILIZADO EM determiMat()
 {
     int Menor[50][50];
     int numLinha,numColuna,k,c1,c2;
@@ -149,9 +142,89 @@ int det(int matriz1[50][50], int n)//FUNÇAO DETERMINATE DE MATRIZES UTILIZANDO R
     getchar();
 }
 
-int metodoDeGauss ()//FUNÇAO ESCALONAMENTO DE MATRIZES
+opcoes(){
+    int selecioneOpcoes;
+
+    opcao:
+    do
+    {
+        system("cls");
+        printf("\n=========Opções=========\n\n\n");
+        printf ("A - Aparência\n");
+        printf ("H - Histórico\n");
+        printf("\n\nDigite a letra referente a opção desejada: \n");
+    selecioneOpcoes = getch();
+    switch (toupper(selecioneOpcoes))
+    {
+    case 'A' :
+        aparencia();
+        break;
+    case 'H':
+        limpaTelaOpcao();
+        break;
+    default:
+            printf("Você deve escolher uma opcão válida\n");
+            printf("Precione ENTER para tentar novamente\n");
+            getchar();
+            goto opcao;
+        }
+    }
+    while(0);
+
+}
+int limpaTelaOpcao()
 {
-    setlocale( LC_ALL, "" );
+
+    int historico;
+
+    opcaoHistorico:
+    do
+    {
+        system("cls");
+        printf("\n=========Histórico=========\n\n");
+        printf ("A - Ativar histórico\n");
+        printf ("D - Desativar histórico\n\n");
+        printf("\nDigite a letra referente a opção desejada: \n");
+    historico = getch();
+    switch (toupper(historico))
+    {
+    case 'A' :
+
+        break;
+    case 'D':
+
+
+        break;
+    default:
+            printf("Você deve escolher uma opcão válida\n");
+            printf("Precione ENTER para tentar novamente\n");
+            getchar();
+            goto opcaoHistorico;
+        }
+    }
+    while(0);
+
+    printf("\nPressione a tecla ENTER para voltar ao menu\n");
+
+    getchar();
+
+}
+int limpaTela(int limpaTela)
+{
+    int limparTela = 0;
+
+    if (limpaTela == 0)
+    {
+    return 0;
+    }else{
+    system("cls");
+    }
+
+
+}
+
+int metodoDeGauss ()//FUNÇÃO ESCALONAMENTO DE MATRIZES
+{
     int aux, numColuna, k, ordem;
     float A[20][20], c, x[10], soma=0.0;
     printf("\n========== Método de Gauss: Escalonamento e Resolução ==========");
@@ -213,20 +286,21 @@ int metodoDeGauss ()//FUNÇAO ESCALONAMENTO DE MATRIZES
     printf("Pressione a tecla ENTER para voltar ao menu\n");
     getchar();
 }
-int aparenciaPadrao (){
+void aparenciaPadrao (){
     system ("color 0F");
 }
-int aparencia ()//FUNÇAO APARENCIA DE CORES DO MENU
+void aparencia ()//FUNÇAO APARENCIA DE CORES DO MENU
 {
     int cor;
-
     selecioneCor:
+
     do
     {
         system("cls");
-        printf ("C - Aparência Clara\n");
+        printf ("\n=========Aparência=========\n\n");
+        printf ("C - Aparência Clara\n\n");
         printf ("E - Aparência Escura (Padrão)\n");
-        printf("\nDigite o aparência desejada: \n");
+        printf("\nDigite a letra referente a aparência desejada: \n");
     cor = getch();
     switch (toupper(cor))
     {
@@ -257,7 +331,7 @@ int matrizInversa2()//FUNÇAO MATRIZ INVERSA
     int numLinha, numColuna;
     printf("Digite a ordem da matriz quadrada : ");
     scanf("%f", &k);
-    printf("digite os elementos da matriz %.0fX%.0f: \n", k, k);
+    printf("Digite os elementos da matriz %.0fX%.0f: \n", k, k);
     for (numLinha = 0; numLinha < k; numLinha++)
     {
         for (numColuna = 0; numColuna < k; numColuna++)
@@ -268,17 +342,18 @@ int matrizInversa2()//FUNÇAO MATRIZ INVERSA
     d = determinanteInversa(a, k);
     if (d == 0)
     {
-        printf("\nMatriz inversa dos valores recebidos nao eh possivel\n");
+        printf("\nMatriz inversa dos valores recebidos não é possivel\n");
     }
     else
     {
         cofator(a, k);
     }
+    getchar();
     printf("\nPressione a tecla ENTER para voltar ao menu\n");
     getchar();
 }
 
-float determinanteInversa(float a[25][25], float k)//FUÇAO DETERMINANTE USADA PARA INVERSA
+float determinanteInversa(float a[25][25], float k)//FUNÇAO DETERMINANTE USADA PARA INVERSA
 {
     float s = 1, det = 0, b[25][25];
     int numLinha, numColuna, m, n, c;
@@ -317,8 +392,6 @@ float determinanteInversa(float a[25][25], float k)//FUÇAO DETERMINANTE USADA PA
     }
     return (det);
 
-    printf("\nPressione a tecla ENTER para voltar ao menu\n");
-    getchar();
 }
 
 void cofator(float num[25][25], float f)//FUNÇAO COFATOR USADA PARA CALCULO DE MATRIZ INVERSA
@@ -353,8 +426,6 @@ void cofator(float num[25][25], float f)//FUNÇAO COFATOR USADA PARA CALCULO DE M
     }
     transposta(num, fac, f);
 
-    printf("\nPressione a tecla ENTER para voltar ao menu\n");
-    getchar();
 }
 
 void transposta(float num[25][25], float fac[25][25], float r)//FUNÇAO TRANSPOSTA USADA PARA CALCULO DE MATRIZ INVERSA
@@ -387,8 +458,7 @@ void transposta(float num[25][25], float fac[25][25], float r)//FUNÇAO TRANSPOST
         }
         printf("\n");
     }
-    printf("\nPressione a tecla ENTER para voltar ao menu\n");
-    getchar();
+
 }
 multMat()// FUNÇAO MULTIPLICAÇAO DE MATRIZES
 {
@@ -456,7 +526,9 @@ multMat()// FUNÇAO MULTIPLICAÇAO DE MATRIZES
     else
     {
         printf("\nErro! Impossivel multiplicar as matrizes informadas.\n\n");
+        getchar();
     }
+    getchar();
     printf("\nPressione a tecla ENTER para voltar ao menu\n");
     getchar();
 }
@@ -482,6 +554,7 @@ somaMat()//FUNÇAO SOMA DE MATRIZES
     scanf("%d", &numLinhaMat2);
     printf("Digite o numero de colunas..: ");
     scanf("%d", &numColMat2);
+
     if (numColMat1 == numLinhaMat2)
     {
         printf("\nValores da Matriz 1\n=====================\n\n");
@@ -520,11 +593,14 @@ somaMat()//FUNÇAO SOMA DE MATRIZES
             printf("\n");
         }
         printf("\n");
+
     }
     else
     {
         printf("\n\nErro! Impossível somar as matrizes informadas.\n\n");
+        getchar();
     }
+    getchar();
     printf("\nPressione a tecla ENTER para voltar ao menu\n");
     getchar();
 }
@@ -792,9 +868,9 @@ elevarAPotenciaDe()
 {
     int numLinhaMat1, p, numLinha, numColuna, i, k, n;
 
-    printf("\n==========ELEVAR MATRIZ À POTENCIA==========\n");
+    printf("\n==========ELEVAR MATRIZ À POTÊNCIA==========\n");
     printf("\nMatriz 1\n==========\n");
-    printf("\nDigite o numero de linhas/colunas da matriz quadrada...: ");
+    printf("\nDigite o número de linhas/colunas da matriz quadrada...: ");
     scanf("%d", &numLinhaMat1);
     do
     {
@@ -965,4 +1041,13 @@ void postoMatriz()
 
     printf("\nPressione a tecla ENTER para voltar ao menu\n");
     getchar();
+}
+
+void sair(){
+    printf("Obrigado por usar a nossa calculadora de matrizes.\n");
+    printf("Criadores do programa: \n");
+    printf("\nLin Shiau Lon Rocha \n");
+    printf("Rodrigo de Oliveira Ribeiro \n\n");
+
+    exit(0);
 }
